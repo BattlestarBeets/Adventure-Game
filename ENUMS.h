@@ -15,9 +15,9 @@ enum eStat {maxHealth = 0, knowledge = 1, might = 2, trickery = 3, depravity = 4
 //totally verbs, guys.
 enum eVerb
 {
-    look = 0,
     north = 1, south = 2, east = 3, west = 4,
-    take = 5
+    take = 5,
+    look = 6
 };
 
 #endif

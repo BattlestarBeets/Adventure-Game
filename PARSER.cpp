@@ -41,7 +41,7 @@ bool parseInput(vector<string> sentence)
     for (int i = 0; i < sentence.size();)
     {
         if (sentence[i] == "at" || sentence[i] == "go" || sentence[i] == "the" || 
-        sentence[i] == "a" || sentence[i] == "an")
+        sentence[i] == "a" || sentence[i] == "an" || sentence[i] == "to")
         {
             sentence.erase(sentence.begin() + i);
         }
@@ -59,13 +59,6 @@ bool parseInput(vector<string> sentence)
     }
     switch(verbMap[sentence[0]]) //Checks the first relevant word input by the user.
     {
-        case look:
-        //Once we have objects coded, we'll be able to have code to look at those objects.
-        //We don't, so we don't. Default looks around the current room. ("look
-        //[currentArea->areaName]" should also look around the current room, but there's no
-        //point coding that until we have a non-default case.)
-        currentArea->displayArea();
-        break;
         case north:
         currentArea->goDirection(north);
         break;
@@ -81,6 +74,13 @@ bool parseInput(vector<string> sentence)
         default:
         cout << "I didn't understand that command." << endl;
         return false;
+        break;
+        case look:
+        //Once we have objects coded, we'll be able to have code to look at those objects.
+        //We don't, so we don't. Default looks around the current room. ("look
+        //[currentArea->areaName]" should also look around the current room, but there's no
+        //point coding that until we have a non-default case.)
+        currentArea->displayArea();
         break;
     }
     return true;
