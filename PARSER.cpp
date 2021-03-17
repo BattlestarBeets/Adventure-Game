@@ -106,6 +106,7 @@ void userInput()
             else
             {
                 sentence.push_back(temp);
+                temp = "";
             }
             if (i == (input.length() - 1))
             {
