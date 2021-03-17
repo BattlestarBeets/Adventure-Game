@@ -28,19 +28,23 @@ void area::findExits()
 {
     if (areaMap[areaLocationX][areaLocationY - 1]!=NULL) //is the adjacent area instantiated?
     {
-        cout << "To the north, there is the " << areaMap[areaLocationX][areaLocationY - 1]->areaName << "." << endl;
+        cout << "To the north, there is the " <<
+        areaMap[areaLocationX][areaLocationY - 1]->areaName << "." << endl;
     }
     if (areaMap[areaLocationX][areaLocationY + 1]!=NULL)
     {
-        cout << "To the south, there is the " << areaMap[areaLocationX][areaLocationY + 1]->areaName << "." << endl;
+        cout << "To the south, there is the " <<
+        areaMap[areaLocationX][areaLocationY + 1]->areaName << "." << endl;
     }
     if (areaMap[areaLocationX + 1][areaLocationY]!=NULL)
     {
-        cout << "To the east, there is the " << areaMap[areaLocationX + 1][areaLocationY]->areaName << "." << endl;
+        cout << "To the east, there is the " <<
+        areaMap[areaLocationX + 1][areaLocationY]->areaName << "." << endl;
     }
     if (areaMap[areaLocationX - 1][areaLocationY]!=NULL)
     {
-        cout << "To the west, there is the " << areaMap[areaLocationX - 1][areaLocationY]->areaName << "." << endl;
+        cout << "To the west, there is the " <<
+        areaMap[areaLocationX - 1][areaLocationY]->areaName << "." << endl;
     }
 }
 
