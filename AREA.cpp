@@ -5,7 +5,7 @@
 using std::cout; using std::cin; using std::string; using std::endl;
 
 //Defining here to avoid linker error.
-area* area::areaMap[5][5] = {NULL};
+vector<vector<area*>> area::areaMap(5, vector<area*>(5));
 
 //Displays description text for the given area.
 void area::displayArea()

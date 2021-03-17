@@ -3,14 +3,15 @@
 #ifndef AREA_H
 #define AREA_H
 #include <string>
+#include <vector>
 #include "PLAYER.h"
 #include "ENUMS.h"
-using std::string;
+using std::string; using std::vector;
 
 class area
 {
     private:
-    static area* areaMap[5][5]; //Grid in which to store pointers to areas
+    static vector<vector<area*>> areaMap; //Grid in which to store pointers to areas
     //for the purpose of movement.
     int areaLocationX; //Room's location along the X/east-west axis.
     int areaLocationY; //Room's location along the Y/north-south axis.
