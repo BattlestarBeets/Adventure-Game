@@ -5,7 +5,7 @@
 using std::cout; using std::cin; using std::string; using std::endl;
 
 //Defining here to avoid linker error.
-vector<vector<area*>> area::areaMap(5, vector<area*>(5));
+vector <vector <area*> > area::areaMap(5, vector<area*>(5));
 
 //Displays description text for the given area.
 void area::displayArea()
@@ -96,6 +96,20 @@ area::area(string name)
 area* area::getArea(int X, int Y)
 {
     return areaMap[X][Y];
+}
+
+area* area::getArea(string name)
+{
+    for (int i = 0; i < areaMap.size(); i++)
+    {
+        for (int j = 0; j < areaMap[i].size(); j++)
+        {
+            if (areaMap[i][j]->areaName == name)
+            {
+                return areaMap[i][j];
+            }
+        }
+    }
 }
 
 //Use for the area the player is currently in.

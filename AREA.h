@@ -11,7 +11,7 @@ using std::string; using std::vector;
 class area
 {
     private:
-    static vector<vector<area*>> areaMap; //Grid in which to store pointers to areas
+    static vector <vector <area*> > areaMap; //Grid in which to store pointers to areas
     //for the purpose of movement.
     int areaLocationX; //Room's location along the X/east-west axis.
     int areaLocationY; //Room's location along the Y/north-south axis.
@@ -20,6 +20,7 @@ class area
 
     public:
     static area* getArea(int, int); //Returns an area's pointer from areaMap.
+    static area* getArea(string); //Returns an area's pointer from areaMap (overload).
     static area* getCurrentArea(); //Returns the pointer of the current area.
     area(int, int, string); //Basic constructor; takes coordinates and area name.
     area(string); //Constructor for areas that don't fit on the map; takes area name.
