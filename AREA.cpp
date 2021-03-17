@@ -92,11 +92,13 @@ area::area(string name)
     areaName = name;
 }
 
+//Use for areas the player is not in.
 area* area::getArea(int X, int Y)
 {
     return areaMap[X][Y];
 }
 
+//Use for the area the player is currently in.
 area* area::getCurrentArea()
 {
     player* p1 = player::getPlayer();
