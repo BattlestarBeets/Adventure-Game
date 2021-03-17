@@ -142,7 +142,7 @@ area* area::getArea(string name)
             }
         }
     }
-    std::cerr << "Attempted to get an area that does not exist." << endl;
+    std::cout << "Attempted to get an area that does not exist." << endl;
     return 0;
 }
 
