@@ -61,16 +61,48 @@ void area::goDirection(eVerb direction)
     switch (direction)
     {
         case north:
-        areaMap[areaLocationX][areaLocationY - 1]->enterArea();
+        if (areaMap[areaLocationX][areaLocationY - 1]!=NULL)
+        {
+            areaMap[areaLocationX][areaLocationY - 1]->enterArea();
+        }
+        else
+        {
+            cout << "You can't go that way!" << endl;
+            enterArea();
+        }
         break;
         case south:
-        areaMap[areaLocationX][areaLocationY + 1]->enterArea();
+        if (areaMap[areaLocationX][areaLocationY + 1]!=NULL)
+        {
+            areaMap[areaLocationX][areaLocationY + 1]->enterArea();
+        }
+        else
+        {
+            cout << "You can't go that way!" << endl;
+            enterArea();
+        }
         break;
         case east:
-        areaMap[areaLocationX + 1][areaLocationY]->enterArea();
+        if (areaMap[areaLocationX + 1][areaLocationY]!=NULL)
+        {
+            areaMap[areaLocationX + 1][areaLocationY]->enterArea();
+        }
+        else
+        {
+            cout << "You can't go that way!" << endl;
+            enterArea();
+        }
         break;
         case west:
-        areaMap[areaLocationX - 1][areaLocationY]->enterArea();
+        if (areaMap[areaLocationX - 1][areaLocationY]!=NULL)
+        {
+            areaMap[areaLocationX - 1][areaLocationY]->enterArea();
+        }
+        else
+        {
+            cout << "You can't go that way!" << endl;
+            enterArea();
+        }
         break;
         default:
         cout << "Something is terribly wrong." << endl;
