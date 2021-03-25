@@ -20,4 +20,7 @@ enum eVerb
     look = 6
 };
 
+//Enum to store usable item types.
+enum eUse {cure = 1, key = 2, page = 3};
+
 #endif

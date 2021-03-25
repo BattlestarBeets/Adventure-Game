@@ -3,6 +3,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 #include <string>
+#include "PICKUP.h"
 #include "ENUMS.h"
 using std::string;
 
@@ -21,7 +22,11 @@ class player
     //as a sort of secondary health bar, related less to physical damage
     //and more to mental or moral harm. Starts at 0, goes to 13.
     int playerStats[5]; //Stores the player's stats.
+    static vector <pickup> playerInventory;
+    static weapon playerWeapon;
     friend class area;
+    friend class pickup;
+    friend class weapon;
 
     public:
     static player* getPlayer(); //Use this to point to p1, the player.
