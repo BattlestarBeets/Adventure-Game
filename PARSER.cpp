@@ -1,12 +1,12 @@
 //Parser written by JS, 03/12/21.
 
-#ifndef PARSER_CPP
-#define PARSER_CPP
-#include "PARSER.h"
+#ifndef parser_cpp
+#define parser_cpp
+#include "parser.h"
 using std::cout; using std::cin; using std::string; using std::endl; using std::vector;
 
 //Converts inputs to lowercase for case-insensitive parsing.
-string lc(string s)
+string lowercase(string s)
 {
     for(int i = 0; i < s.length(); i++)
         s[i] = tolower(s[i]);
@@ -18,12 +18,15 @@ string lc(string s)
 std::map<string, eVerb> makeVerbMap()
 {
     std::map<string, eVerb> verbMap;
-    verbMap["look"] = look; verbMap["lookaround"] = look;
+    verbMap["look"] = look;
     verbMap["north"] = north; verbMap["n"] = north;
     verbMap["south"] = south; verbMap["s"] = south;
     verbMap["east"] = east; verbMap["e"] = east;
     verbMap["west"] = west; verbMap["w"] = west;
     verbMap["take"] = take; verbMap["get"] = take; verbMap["pickup"] = take;
+    verbMap["equip"] = equip; verbMap["wield"] = equip; verbMap["wear"] = equip; verbMap["puton"] = equip;
+    verbMap["use"] = use; verbMap["eat"] = use; verbMap["consume"] = use; verbMap["read"] = use;
+    verbMap["drink"] = use;
     return verbMap;
 }
 
@@ -45,8 +48,8 @@ bool parseInput(vector<string> sentence)
         {
             sentence.erase(sentence.begin() + i);
         }
-        else if ((sentence[i] == "look" && sentence[i+1] == "around" ) || 
-        (sentence[i] == "pick" && sentence[i+1] == "up"))
+        else if ((sentence[i] == "pick" && sentence[i+1] == "up") || (sentence[i] == "put" &&
+        sentence[i+1] == "on"))
         {
             sentence[i] += sentence[i+1];
             sentence.erase(sentence.begin() + i + 1);
@@ -76,11 +79,25 @@ bool parseInput(vector<string> sentence)
         return false;
         break;
         case look:
-        //Once we have objects coded, we'll be able to have code to look at those objects.
-        //We don't, so we don't. Default looks around the current room. ("look
-        //[currentArea->areaName]" should also look around the current room, but there's no
-        //point coding that until we have a non-default case.)
-        currentArea->displayArea();
+        if (sentence[1] == "around" || sentence.size() == 1)
+        {
+            currentArea->displayArea();
+        }
+        else
+        {
+            for (auto it : currentArea->areaItems)
+            {
+                if (lowercase(it.getItemName()) == sentence[1])
+                {
+                    cout << it.getItemDesc() << endl;
+                    break;
+                }
+            }
+        }
+        break;
+        //Default looks around the current room. If an item name is entered and that item is in the room,
+        //returns the item description.
+        
         break;
     }
     return true;
@@ -94,7 +111,7 @@ void userInput()
         cout << "What do you do?" << endl;
         string input;
         getline(cin, input);
-        input = lc(input);
+        input = lowercase(input);
         vector<string> sentence;
         string temp = "";
         for (int i = 0; i < input.length(); i++)

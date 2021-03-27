@@ -1,11 +1,12 @@
 //Area class written by JS, 02/27/21.
 
-#ifndef AREA_H
-#define AREA_H
+#ifndef area_h
+#define area_h
 #include <string>
 #include <vector>
-#include "PLAYER.h"
-#include "ENUMS.h"
+#include "pickup.h"
+#include "player.h"
+#include "enums.h"
 using std::string; using std::vector;
 
 class area
@@ -17,18 +18,24 @@ class area
     int areaLocationY; //Room's location along the Y/north-south axis.
     string areaDescription; //What is displayed when entering or looking around the room.
     string areaName; //The room's official name.
+    bool locked; //If the doors to the room are locked, true. Else, false.
+    friend class pickup;
 
     public:
     static area* getArea(int, int); //Returns an area's pointer from areaMap.
     static area* getArea(string); //Returns an area's pointer from areaMap (overload).
     static area* getCurrentArea(); //Returns the pointer of the current area.
     area(int, int, string); //Basic constructor; takes coordinates and area name.
-    area(string); //Constructor for areas that don't fit on the map; takes area name.
+    area(string); //Constructor for areas that don't fit on the map.
+    area(int, int, string, bool); //Constructor for locked rooms. Additionally takes lock.
     void displayArea(); //Displays the area description.
     void findExits(); //Finds any exits and outputs their locations.
     void enterArea(); //Moves the player to a given area.
     void setAreaDescription(string); //Sets the area description.
     void goDirection(eVerb); //Moves the player in a given direction.
+    vector <pickup> areaItems; //Vector containing any usable items or other pickups
+    //in the current room.
+    weapon* areaWeapon; //Contains any weapon in the current room.
 };
 
 #endif

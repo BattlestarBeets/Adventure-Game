@@ -1,5 +1,5 @@
-#ifndef ENUMS_H
-#define ENUMS_H
+#ifndef enums_h
+#define enums_h
 
 //This file stores various enums. Using unscoped enum instead of enum class so enum values
 //can index arrays without using static_cast.
@@ -17,7 +17,9 @@ enum eVerb
 {
     north = 1, south = 2, east = 3, west = 4,
     take = 5,
-    look = 6
+    look = 6,
+    equip = 7,
+    use = 8
 };
 
 //Enum to store usable item types.

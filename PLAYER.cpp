@@ -1,14 +1,14 @@
 //Player class written by JS, 03/03/21.
 
+#ifndef player_cpp
+#define player_cpp
 #include <iostream>
-#include "PLAYER.h"
+#include "player.h"
 using std::cout; using std::cin; using std::string; using std::endl;
 
 //Defining here to avoid linker error.
 player* player::p1;
 player::player(){}
-vector <pickup> player::playerInventory;
-weapon player::playerWeapon;
 
 //Sets player name. Call upon creation and forget about it.
 void player::setPlayerName()
@@ -22,9 +22,9 @@ void player::setPlayerName()
 
 //Sets player's job and maxHealth. Call upon creation (as student) and when the
 //player picks up their starting weapon.
-void player::setPlayerJob(eJob weapon)
+void player::setPlayerJob(eJob inJob)
 {
-    playerJob = weapon;
+    playerJob = inJob;
     switch (playerJob)
     {
         case student: case mage: case cultist: playerHealth = 20;
@@ -63,7 +63,7 @@ void player::healPlayer(int healing)
 void player::corruptPlayer(int damage)
 {
     playerCorruption += damage;
-    if (playerCorruption >= 13) //Lucky 13 is the threshold. Over 13? Die.
+    if (playerCorruption >= 13) //Lucky 13 is the threshold. 13 or over? Die.
     {
         player::badEnd();
     }
@@ -109,3 +109,5 @@ player* player::getPlayer()
     }
     return p1;
 }
+
+#endif

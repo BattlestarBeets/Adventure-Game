@@ -1,10 +1,10 @@
 //Player class written by JS, 03/03/21. 
 
-#ifndef PLAYER_H
-#define PLAYER_H
+#ifndef player_h
+#define player_h
 #include <string>
-#include "PICKUP.h"
-#include "ENUMS.h"
+#include "pickup.h"
+#include "enums.h"
 using std::string;
 
 class player
@@ -22,11 +22,8 @@ class player
     //as a sort of secondary health bar, related less to physical damage
     //and more to mental or moral harm. Starts at 0, goes to 13.
     int playerStats[5]; //Stores the player's stats.
-    static vector <pickup> playerInventory;
-    static weapon playerWeapon;
-    friend class area;
     friend class pickup;
-    friend class weapon;
+    friend class area;
 
     public:
     static player* getPlayer(); //Use this to point to p1, the player.
@@ -42,6 +39,8 @@ class player
     void modPlayerStat(eStat, int); //Modifies the specified stat.
     void killPlayer(); //Game over.
     void badEnd(); //Game over (corruption edition).
+    vector <pickup> playerInventory;
+    weapon* playerWeapon;
 };
 
 #endif
