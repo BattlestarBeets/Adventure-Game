@@ -1,8 +1,8 @@
 //This file exists to avoid linker errors.
-#ifndef newarea_h
-#define newarea_h
+#ifndef newarea_hpp
+#define newarea_hpp
 
-#include "area.h"
+#include "area.hpp"
 
 void areaSetup();
 

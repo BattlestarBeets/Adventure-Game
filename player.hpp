@@ -1,11 +1,13 @@
 //Player class written by JS, 03/03/21. 
 
-#ifndef player_h
-#define player_h
+class pickup;
+
+#ifndef player_hpp
+#define player_hpp
 #include <string>
-#include "pickup.h"
-#include "enums.h"
-using std::string;
+#include "pickup.hpp"
+#include "enums.hpp"
+using std::string; using std::vector;
 
 class player
 {
@@ -40,7 +42,7 @@ class player
     void killPlayer(); //Game over.
     void badEnd(); //Game over (corruption edition).
     vector <pickup> playerInventory;
-    weapon* playerWeapon;
+    pickup* playerWeapon;
 };
 
 #endif

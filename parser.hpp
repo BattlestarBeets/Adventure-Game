@@ -7,9 +7,9 @@
 #include <iostream>
 #include <vector>
 #include <map>
-#include "area.h"
-#include "player.h"
-#include "enums.h"
+#include "area.hpp"
+#include "player.hpp"
+#include "enums.hpp"
 using std::string; using std::vector;
 
 string lowercase(string);

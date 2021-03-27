@@ -3,7 +3,7 @@
 #ifndef area_cpp
 #define area_cpp
 #include <iostream>
-#include "area.h"
+#include "area.hpp"
 using std::cout; using std::cin; using std::string; using std::endl; using std::vector;
 
 //Defining here to avoid linker error.
@@ -20,10 +20,6 @@ void area::displayArea()
                 cout << "There is a " << it.getItemName() << "here." << endl;
             }
         }
-    if (areaWeapon != nullptr)
-    {
-        cout << "There is a " << areaWeapon->getItemName() << "here." << endl;
-    }
 }
 
 //Displays the area description, moves the player, and displays the area's exits.
@@ -96,7 +92,7 @@ void area::goDirection(eVerb direction)
         case north:
         if (areaMap[areaLocationX][areaLocationY - 1]!=NULL)
         {
-            if (areaMap[areaLocationX][areaLocationY - 1]->locked = true)
+            if (areaMap[areaLocationX][areaLocationY - 1]->locked == true)
             {
                 cout << "The door is locked." << endl;
                 enterArea();
@@ -115,7 +111,7 @@ void area::goDirection(eVerb direction)
         case south:
         if (areaMap[areaLocationX][areaLocationY + 1]!=NULL)
         {
-            if (areaMap[areaLocationX][areaLocationY + 1]->locked = true)
+            if (areaMap[areaLocationX][areaLocationY + 1]->locked == true)
             {
                 cout << "The door is locked." << endl;
                 enterArea();
@@ -134,7 +130,7 @@ void area::goDirection(eVerb direction)
         case east:
         if (areaMap[areaLocationX + 1][areaLocationY]!=NULL)
         {
-            if (areaMap[areaLocationX + 1][areaLocationY]->locked = true)
+            if (areaMap[areaLocationX + 1][areaLocationY]->locked == true)
             {
                 cout << "The door is locked." << endl;
                 enterArea();
@@ -153,7 +149,7 @@ void area::goDirection(eVerb direction)
         case west:
         if (areaMap[areaLocationX - 1][areaLocationY]!=NULL)
         {
-            if (areaMap[areaLocationX - 1][areaLocationY]->locked = true)
+            if (areaMap[areaLocationX - 1][areaLocationY]->locked == true)
             {
                 cout << "The door is locked." << endl;
                 enterArea();

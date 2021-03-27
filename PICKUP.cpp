@@ -2,8 +2,8 @@
 
 #ifndef pickup_cpp
 #define pickup_cpp
-#include "pickup.h"
-#include "player.h"
+#include "pickup.hpp"
+#include "player.hpp"
 #include <iostream>
 using std::vector; using std::cout; using std::cin; using std::string; using std::endl;
 
@@ -11,16 +11,25 @@ using std::vector; using std::cout; using std::cin; using std::string; using std
 void pickup::takeItem()
 {
     player* p1 = player::getPlayer();
-    p1->playerInventory.push_back(*this);
-    cout << "Picked up " << itemDisplayName << "!" << endl;
     area* currentArea = area::getCurrentArea();
+    if (itemFunction == weapon)
+    {
+        equipWeapon();
+    }
+    else
+    {
+        p1->playerInventory.push_back(*this);
+        cout << "Picked up " << itemDisplayName << "!" << endl;
+    }
     for (auto it : currentArea->areaItems)
     {
+        int i = 0;
         if (it.itemDisplayName == this->itemDisplayName)
         {
-            currentArea->areaItems.erase(it);
+            currentArea->areaItems.erase(currentArea->areaItems.begin() + i);
             break;
         }
+        i++;
     }
 }
 
@@ -30,11 +39,13 @@ void pickup::destroyItem()
     player* p1 = player::getPlayer();
     for (auto it : p1->playerInventory)
     {
+        int i = 0;
         if (it.itemDisplayName == this->itemDisplayName)
         {
-            p1->playerInventory.erase(it);
+            p1->playerInventory.erase(p1->playerInventory.begin() + i);
             break;
         }
+        i++;
     }
     cout << "Could not destroy item." << endl;
 }
@@ -106,32 +117,27 @@ void pickup::useItem()
     }
 }
 
-pickup::pickup(area location, eUse function, string desc, string name)
+pickup::pickup(area location, eUse function, string desc, string name, int variable)
 {
     location.areaItems.push_back(*this);
     itemFunction = function;
     itemDescription = desc;
     itemDisplayName = name;
+    if (function == cure)
+    {
+        itemHeal = variable;
+    }
+    else if (function == weapon)
+    {
+        weaponDamage = variable;
+    }
 }
 
-void weapon::takeItem()
-{
-    equipWeapon();
-}
-
-void weapon::equipWeapon()
+void pickup::equipWeapon()
 {
     player* p1 = player::getPlayer();
     p1->playerWeapon = this;
     cout << "Equipped " << itemDisplayName << "!" << endl;
-}
-
-weapon::weapon(area location, string desc, string name, int dmg)
-{
-    location.areaWeapon = this;
-    itemDescription = desc;
-    itemDisplayName = name;
-    weaponDamage = dmg;
 }
 
 #endif

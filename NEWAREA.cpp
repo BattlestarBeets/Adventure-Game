@@ -1,7 +1,7 @@
 //Instantiates areas at the beginning of the game so the main remains tidy.
 #ifndef newarea_cpp
 #define newarea_cpp
-#include "newArea.h"
+#include "newArea.hpp"
 
 void areaSetup()
 {

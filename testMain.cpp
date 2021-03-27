@@ -1,5 +1,5 @@
-#include "parser.h"
-#include "newArea.h"
+#include "parser.hpp"
+#include "newArea.hpp"
 
 int main()
 {

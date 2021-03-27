@@ -1,12 +1,14 @@
 //Area class written by JS, 02/27/21.
 
-#ifndef area_h
-#define area_h
+class pickup;
+
+#ifndef area_hpp
+#define area_hpp
 #include <string>
 #include <vector>
-#include "pickup.h"
-#include "player.h"
-#include "enums.h"
+#include "pickup.hpp"
+#include "player.hpp"
+#include "enums.hpp"
 using std::string; using std::vector;
 
 class area
@@ -35,7 +37,6 @@ class area
     void goDirection(eVerb); //Moves the player in a given direction.
     vector <pickup> areaItems; //Vector containing any usable items or other pickups
     //in the current room.
-    weapon* areaWeapon; //Contains any weapon in the current room.
 };
 
 #endif

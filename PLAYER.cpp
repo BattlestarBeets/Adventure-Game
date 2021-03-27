@@ -3,7 +3,7 @@
 #ifndef player_cpp
 #define player_cpp
 #include <iostream>
-#include "player.h"
+#include "player.hpp"
 using std::cout; using std::cin; using std::string; using std::endl;
 
 //Defining here to avoid linker error.

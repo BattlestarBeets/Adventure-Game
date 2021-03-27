@@ -1,5 +1,5 @@
-#ifndef enums_h
-#define enums_h
+#ifndef enums_hpp
+#define enums_hpp
 
 //This file stores various enums. Using unscoped enum instead of enum class so enum values
 //can index arrays without using static_cast.
@@ -23,6 +23,6 @@ enum eVerb
 };
 
 //Enum to store usable item types.
-enum eUse {cure = 1, key = 2, page = 3};
+enum eUse {cure = 1, key = 2, page = 3, weapon = 4};
 
 #endif
