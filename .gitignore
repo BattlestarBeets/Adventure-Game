@@ -39,3 +39,6 @@
 *.sqlite
 *.sqlite-journal
 *.suo
+*.tlog
+*.lastbuildstate
+*.log
