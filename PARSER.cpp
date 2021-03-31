@@ -79,7 +79,7 @@ bool parseInput(vector<string> sentence)
         return false;
         break;
         case look:
-        if (sentence[1] == "around" || sentence.size() == 1)
+        if (sentence.size() == 1 || sentence[1] == "around")
         {
             currentArea->displayArea();
         }

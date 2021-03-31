@@ -39,10 +39,6 @@
 *.sqlite
 *.sqlite-journal
 *.suo
-*.ilk
-*.pdb
-*.vcxproj
-*.idb
 *.tlog
 *.lastbuildstate
 *.log
