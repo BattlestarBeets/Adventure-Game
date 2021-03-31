@@ -3,6 +3,7 @@
 #define newarea_cpp
 #include "newArea.hpp"
 
+
 void areaSetup()
 {
     //START ROOM INITIALZATION
@@ -19,6 +20,7 @@ void areaSetup()
     "in here. Also, a sword."
     );
     pickup* apple1 = new pickup(*swordRoom, cure, "apple", "A shiny red apple that restores 5 health.", 5); //places
+    swordRoom->addItem(*apple1);
 
     //ROOM TO THE SOUTH: GRAVEYARD/CEMETERY INITIALIZATION
     area* graveyard = new area (2, 4, "Graveyard");

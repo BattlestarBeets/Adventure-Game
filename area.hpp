@@ -37,6 +37,7 @@ class area
     void goDirection(eVerb); //Moves the player in a given direction.
     vector <pickup> areaItems; //Vector containing any usable items or other pickups
     //in the current room.
+    void addItem(pickup);
 };
 
 #endif
