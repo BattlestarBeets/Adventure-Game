@@ -117,7 +117,7 @@ void pickup::useItem()
     }
 }
 
-pickup::pickup(area location, eUse function, string desc, string name, int variable)
+pickup::pickup(area location, eUse function, string name, string desc, int variable)
 {
     location.areaItems.push_back(*this);
     itemFunction = function;
