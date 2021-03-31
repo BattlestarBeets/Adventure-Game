@@ -62,6 +62,10 @@ bool parseInput(vector<string> sentence)
     }
     switch(verbMap[sentence[0]]) //Checks the first relevant word input by the user.
     {
+        default:
+        cout << "I didn't understand that command." << endl;
+        return false;
+        break;
         case north:
         currentArea->goDirection(north);
         break;
@@ -73,10 +77,6 @@ bool parseInput(vector<string> sentence)
         break;
         case west:
         currentArea->goDirection(west);
-        break;
-        default:
-        cout << "I didn't understand that command." << endl;
-        return false;
         break;
         case look:
         if (sentence.size() == 1 || sentence[1] == "around")
@@ -107,6 +107,7 @@ bool parseInput(vector<string> sentence)
             }
         }
         break;
+        //Checks if the item name entered matches an item in the current room. If it does, item is picked up.
     }
     return true;
 }
