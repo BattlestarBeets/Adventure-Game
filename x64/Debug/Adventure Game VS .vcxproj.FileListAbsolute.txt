@@ -1,0 +1,2 @@
+C:\Users\Cortana\source\repos\BattlestarBeets\Adventure-Game\x64\Debug\Adventure Game VS .exe
+C:\Users\Cortana\source\repos\BattlestarBeets\Adventure-Game\x64\Debug\Adventure Game VS .pdb
