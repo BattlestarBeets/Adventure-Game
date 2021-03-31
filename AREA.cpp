@@ -13,22 +13,20 @@ vector <vector <area*> > area::areaMap(5, vector<area*>(5));
 void area::displayArea()
 {
     cout << areaDescription << endl;
-    if (!areaItems.empty())
+    for (auto it : areaItems)
         {
-            for (auto it : areaItems)
-            {
-                cout << "There is a " << it.getItemName() << "here." << endl;
-            }
+            cout << "There is a(n) " << it.getItemName() << " here." << endl;
         }
+    cout << "There are " << areaItems.size() << " items here." << endl;
 }
 
 //Displays the area description, moves the player, and displays the area's exits.
 void area::enterArea()
 {
-    displayArea();
     player* p1 = player::getPlayer();
     p1->playerLocationX = areaLocationX;
     p1->playerLocationY = areaLocationY;
+    displayArea();
     findExits();
 }
 
@@ -42,7 +40,7 @@ void area::findExits()
         if (areaMap[areaLocationX][areaLocationY - 1]->locked == true)
         {
             cout << "The door to the " <<
-            areaMap[areaLocationX][areaLocationY - 1]->areaName << "is locked." << endl;
+            areaMap[areaLocationX][areaLocationY - 1]->areaName << " is locked." << endl;
         }
     }
     if (areaMap[areaLocationX][areaLocationY + 1]!=NULL)
@@ -52,7 +50,7 @@ void area::findExits()
         if (areaMap[areaLocationX][areaLocationY + 1]->locked == true)
         {
             cout << "The door to the " <<
-            areaMap[areaLocationX][areaLocationY + 1]->areaName << "is locked." << endl;
+            areaMap[areaLocationX][areaLocationY + 1]->areaName << " is locked." << endl;
         }
     }
     if (areaMap[areaLocationX + 1][areaLocationY]!=NULL)
@@ -62,7 +60,7 @@ void area::findExits()
         if (areaMap[areaLocationX + 1][areaLocationY]->locked == true)
         {
             cout << "The door to the " <<
-            areaMap[areaLocationX + 1][areaLocationY]->areaName << "is locked." << endl;
+            areaMap[areaLocationX + 1][areaLocationY]->areaName << " is locked." << endl;
         }
     }
     if (areaMap[areaLocationX - 1][areaLocationY]!=NULL)
@@ -72,7 +70,7 @@ void area::findExits()
         if (areaMap[areaLocationX - 1][areaLocationY]->locked == true)
         {
             cout << "The door to the " <<
-            areaMap[areaLocationX - 1][areaLocationY]->areaName << "is locked." << endl;
+            areaMap[areaLocationX - 1][areaLocationY]->areaName << " is locked." << endl;
         }
     }
 }
@@ -170,6 +168,11 @@ void area::goDirection(eVerb direction)
     }
 }
 
+void area::addItem(pickup item)
+{
+    areaItems.push_back(item);
+}
+
 //Basic constructor for an area.
 area::area(int X, int Y, string name)
 {
@@ -177,6 +180,8 @@ area::area(int X, int Y, string name)
     areaLocationY = Y;
     areaMap[X][Y] = this;
     areaName = name;
+    vector<pickup> temp;
+    areaItems = temp;
 }
 
 //Constructor for locked rooms.
@@ -187,12 +192,16 @@ area::area(int X, int Y, string name, bool lock)
     areaMap[X][Y] = this;
     areaName = name;
     locked = lock;
+    vector<pickup> temp;
+    areaItems = temp;
 }
 
 //Constructor for areas that don't fit on the map.
 area::area(string name)
 {
     areaName = name;
+    vector<pickup> temp;
+    areaItems = temp;
 }
 
 //Use for areas the player is not in.

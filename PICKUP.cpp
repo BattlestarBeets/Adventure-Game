@@ -119,7 +119,6 @@ void pickup::useItem()
 
 pickup::pickup(area location, eUse function, string name, string desc, int variable) //pickup* itemName[1](roomName, itemType, itemName, itemDescription, healingAmount) //put this in NEWAREA.CPP
 {
-    location.areaItems.push_back(*this);
     itemFunction = function;
     itemDescription = desc;
     itemDisplayName = name;
