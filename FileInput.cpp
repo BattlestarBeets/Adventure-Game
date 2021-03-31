@@ -1,9 +1,9 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-using namespace std;
+using namespace::std;
 
-int main() {
+int fileRead() {
 	ifstream sampleFile; //Text that comes after ifstream is related to everything for that file for that function.
 	//For instance, if you want to load text from the foyer description, you could describe it as "foyerFile"
 
