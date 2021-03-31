@@ -94,7 +94,6 @@ bool parseInput(vector<string> sentence)
                 }
             }
         }
-        cout << "Couldn't find that item." << endl;
         break;
         //Default looks around the current room. If an item name is entered and that item is in the room,
         //returns the item description.
@@ -103,11 +102,10 @@ bool parseInput(vector<string> sentence)
         {
             if (lowercase(it.getItemName()) == sentence[1])
             {
-                cout << it.takeItem() << endl;
+                it.takeItem();
                 break;
             }
         }
-        cout << "Couldn't find that item." << endl;
         break;
     }
     return true;
