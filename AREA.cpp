@@ -28,6 +28,7 @@ void area::enterArea()
     p1->playerLocationY = areaLocationY;
     displayArea();
     findExits();
+    cout << endl;
 }
 
 //Basic coordinate math on the 2D array allows us to determine if a room has exits.
