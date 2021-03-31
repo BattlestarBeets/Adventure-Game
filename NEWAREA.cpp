@@ -18,7 +18,7 @@ void areaSetup()
     "You're standing in the storage room. There's a ton of junk\n"
     "in here. Also, a sword."
     );
-    pickup* apple1 = new pickup(swordRoom, cure, "apple", "A shiny red apple that restores 5 health."); //places
+    pickup* apple1 = new pickup(swordRoom, cure, "apple", "A shiny red apple that restores 5 health.", 5); //places
 
     //ROOM TO THE SOUTH: GRAVEYARD/CEMETERY INITIALIZATION
     area* graveyard = new area (2, 4, "Graveyard");
