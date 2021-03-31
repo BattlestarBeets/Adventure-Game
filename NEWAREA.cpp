@@ -3,10 +3,9 @@
 #define newarea_cpp
 #include "newArea.hpp"
 
-
 void areaSetup()
 {
-    //START ROOM INITIALZATION
+    //START ROOM INITIALIZATION
     area* startRoom = new area (2, 3, "Foyer");
     startRoom->setAreaDescription(
     "You're standing in the entry hall. There's not much in here\n"
@@ -28,6 +27,8 @@ void areaSetup()
     "You're standing in the graveyard. Spooky. There's tombstones\n"
     "everywhere. One of them has a strange necklace on it."
     );
+    pickup* apple2 = new pickup(*graveyard, cure, "apple", "A shiny red apple that restores 5 health.", 5); //places an apple in corresponding room
+    graveyard->addItem(*apple2);
 
     //ROOM TO THE EAST: KITCHEN INITIALIZATION
     area* kitchen = new area (1, 3, "Kitchen");
@@ -35,6 +36,8 @@ void areaSetup()
     "You're standing in the kitchen. There's a knife block with a\n"
     "butcher's knife stuck in it - looks wickedly sharp."
     );
+    pickup* apple3 = new pickup(*kitchen, cure, "apple", "A shiny red apple that restores 5 health.", 5); //places an apple in corresponding room
+    kitchen->addItem(*apple3);
 
     //ROOM TO THE WEST: LIBRARY INITIALIZATION
     area* library = new area (3, 3, "Library");
@@ -42,5 +45,7 @@ void areaSetup()
     "You're standing in the library. Thick dust covers the shelves\n"
     "and books, except for one tome sitting proudly on a pedestal."
     );
+    pickup* apple4 = new pickup(*library, cure, "apple", "A shiny red apple that restores 5 health.", 5); //places an apple in corresponding room
+    library->addItem(*apple4);
 }
 #endif

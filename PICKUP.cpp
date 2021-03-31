@@ -117,7 +117,7 @@ void pickup::useItem()
     }
 }
 
-pickup::pickup(area location, eUse function, string name, string desc, int variable)
+pickup::pickup(area location, eUse function, string name, string desc, int variable) //pickup* itemName[1](roomName, itemType, itemName, itemDescription, healingAmount) //put this in NEWAREA.CPP
 {
     itemFunction = function;
     itemDescription = desc;
