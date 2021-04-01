@@ -85,26 +85,45 @@ bool parseInput(vector<string> sentence)
         }
         else
         {
+            bool looked = false;
             for (auto it : currentArea->areaItems)
             {
                 if (lowercase(it.getItemName()) == sentence[1])
                 {
                     cout << it.getItemDesc() << endl;
+                    looked = true;
                     break;
                 }
+            }
+            if (looked == false)
+            {
+                cout << "Nothing interesting there." << endl;
             }
         }
         break;
         //Default looks around the current room. If an item name is entered and that item is in the room,
         //returns the item description.
         case take:
-        for (auto it : currentArea->areaItems)
+        if (sentence.size() != 1)
         {
-            if (lowercase(it.getItemName()) == sentence[1])
+            bool taken = false;
+            for (auto it : currentArea->areaItems)
             {
-                it.takeItem();
-                break;
+                if (lowercase(it.getItemName()) == sentence[1])
+                {
+                    it.takeItem();
+                    taken = true;
+                    break;
+                }
             }
+            if (taken == false)
+            {
+                cout << "You can't take that." << endl;
+            }
+        }
+        else
+        {
+            cout << "Take what?" << endl;
         }
         break;
         //Checks if the item name entered matches an item in the current room. If it does, item is picked up.
