@@ -100,6 +100,7 @@
   <ItemGroup>
     <ClCompile Include="AREA.cpp" />
     <ClCompile Include="FileInput.cpp" />
+    <ClCompile Include="InventoryList.cpp" />
     <ClCompile Include="NEWAREA.cpp" />
     <ClCompile Include="PARSER.cpp" />
     <ClCompile Include="PICKUP.cpp" />
@@ -109,6 +110,7 @@
   <ItemGroup>
     <ClInclude Include="area.hpp" />
     <ClInclude Include="enums.hpp" />
+    <ClInclude Include="InventoryList.hpp" />
     <ClInclude Include="newArea.hpp" />
     <ClInclude Include="parser.hpp" />
     <ClInclude Include="pickup.hpp" />

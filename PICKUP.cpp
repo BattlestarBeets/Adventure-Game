@@ -40,14 +40,19 @@ void pickup::destroyItem()
     for (auto it : p1->playerInventory)
     {
         int i = 0;
+        int j = 0;
         if (it.itemDisplayName == this->itemDisplayName)
         {
             p1->playerInventory.erase(p1->playerInventory.begin() + i);
+            j++;
             break;
         }
         i++;
     }
-    cout << "Could not destroy item." << endl;
+    if (j == 0)
+    {
+        cout << "Could not destroy item." << endl;
+    }
 }
 
 //Uses the current item. Depending on the item type, this could mean a lot of things.

@@ -10,6 +10,7 @@
 #include "area.hpp"
 #include "player.hpp"
 #include "enums.hpp"
+#include "InventoryList.hpp"
 using std::string; using std::vector;
 
 string lowercase(string);
