@@ -3,6 +3,7 @@
 #ifndef parser_cpp
 #define parser_cpp
 #include "parser.hpp"
+#include "InventoryList.hpp"
 using std::cout; using std::cin; using std::string; using std::endl; using std::vector;
 
 //Converts inputs to lowercase for case-insensitive parsing.
@@ -27,6 +28,7 @@ std::map<string, eVerb> makeVerbMap()
     verbMap["equip"] = equip; verbMap["wield"] = equip; verbMap["wear"] = equip; verbMap["puton"] = equip;
     verbMap["use"] = use; verbMap["eat"] = use; verbMap["consume"] = use; verbMap["read"] = use;
     verbMap["drink"] = use;
+    verbMap["inventory"] = inventory; verbMap["i"] = inventory;
     return verbMap;
 }
 
@@ -127,6 +129,9 @@ bool parseInput(vector<string> sentence)
         }
         break;
         //Checks if the item name entered matches an item in the current room. If it does, item is picked up.
+        case inventory:
+        getInventory();
+        break;
     }
     return true;
 }
