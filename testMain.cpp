@@ -8,7 +8,7 @@ int main()
     p1->setPlayerName();
     area* startRoom = area::getArea(2, 3);
     startRoom->enterArea();
-    while (true)
+    for(;;)
     {
         userInput();
     }

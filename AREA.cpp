@@ -33,45 +33,73 @@ void area::enterArea()
 //Basic coordinate math on the 2D array allows us to determine if a room has exits.
 void area::findExits()
 {
-    if (areaMap[areaLocationX][areaLocationY - 1]!=NULL) //is the adjacent area instantiated?
+    try
     {
-        cout << "To the north, there is the " <<
-        areaMap[areaLocationX][areaLocationY - 1]->areaName << "." << endl;
-        if (areaMap[areaLocationX][areaLocationY - 1]->locked == true)
+        if (areaMap.at(areaLocationX).at(areaLocationY - 1) != NULL) //is the adjacent area instantiated?
         {
-            cout << "The door to the " <<
-            areaMap[areaLocationX][areaLocationY - 1]->areaName << " is locked." << endl;
+            cout << "To the north, there is the " <<
+            areaMap.at(areaLocationX).at(areaLocationY - 1)->areaName << "." << endl;
+            if (areaMap.at(areaLocationX).at(areaLocationY - 1)->locked == true)
+            {
+                cout << "The door to the " <<
+                areaMap.at(areaLocationX).at(areaLocationY - 1)->areaName << " is locked." << endl;
+            }
         }
     }
-    if (areaMap[areaLocationX][areaLocationY + 1]!=NULL)
+    catch (const std::out_of_range& oor)
     {
-        cout << "To the south, there is the " <<
-        areaMap[areaLocationX][areaLocationY + 1]->areaName << "." << endl;
-        if (areaMap[areaLocationX][areaLocationY + 1]->locked == true)
+        ;
+    }
+    try
+    {
+        if (areaMap.at(areaLocationX).at(areaLocationY + 1)!=NULL)
         {
-            cout << "The door to the " <<
-            areaMap[areaLocationX][areaLocationY + 1]->areaName << " is locked." << endl;
+            cout << "To the south, there is the " <<
+            areaMap.at(areaLocationX).at(areaLocationY + 1)->areaName << "." << endl;
+            if (areaMap.at(areaLocationX).at(areaLocationY + 1)->locked == true)
+            {
+                cout << "The door to the " <<
+                areaMap.at(areaLocationX).at(areaLocationY + 1)->areaName << " is locked." << endl;
+            }
         }
     }
-    if (areaMap[areaLocationX + 1][areaLocationY]!=NULL)
+    catch (const std::out_of_range& oor)
     {
-        cout << "To the east, there is the " <<
-        areaMap[areaLocationX + 1][areaLocationY]->areaName << "." << endl;
-        if (areaMap[areaLocationX + 1][areaLocationY]->locked == true)
+        ;
+    }
+    try
+    {
+        if (areaMap.at(areaLocationX + 1).at(areaLocationY)!=NULL)
         {
-            cout << "The door to the " <<
-            areaMap[areaLocationX + 1][areaLocationY]->areaName << " is locked." << endl;
+            cout << "To the east, there is the " <<
+            areaMap.at(areaLocationX + 1).at(areaLocationY)->areaName << "." << endl;
+            if (areaMap.at(areaLocationX + 1).at(areaLocationY)->locked == true)
+            {
+                cout << "The door to the " <<
+                areaMap.at(areaLocationX + 1).at(areaLocationY)->areaName << " is locked." << endl;
+            }
         }
     }
-    if (areaMap[areaLocationX - 1][areaLocationY]!=NULL)
+    catch (const std::out_of_range& oor)
     {
-        cout << "To the west, there is the " <<
-        areaMap[areaLocationX - 1][areaLocationY]->areaName << "." << endl;
-        if (areaMap[areaLocationX - 1][areaLocationY]->locked == true)
+        ;
+    }
+    try
+    {
+        if (areaMap.at(areaLocationX - 1).at(areaLocationY)!=NULL)
         {
-            cout << "The door to the " <<
-            areaMap[areaLocationX - 1][areaLocationY]->areaName << " is locked." << endl;
+            cout << "To the west, there is the " <<
+            areaMap.at(areaLocationX - 1).at(areaLocationY)->areaName << "." << endl;
+            if (areaMap.at(areaLocationX - 1).at(areaLocationY)->locked == true)
+            {
+                cout << "The door to the " <<
+                areaMap.at(areaLocationX - 1).at(areaLocationY)->areaName << " is locked." << endl;
+            }
         }
+    }
+    catch (const std::out_of_range& oor)
+    {
+        ;
     }
 }
 
@@ -88,69 +116,85 @@ void area::goDirection(eVerb direction)
     switch (direction)
     {
         case north:
-        if (areaMap[areaLocationX][areaLocationY - 1]!=NULL)
+        try
         {
-            if (areaMap[areaLocationX][areaLocationY - 1]->locked == true)
+            if (areaMap.at(areaLocationX).at(areaLocationY - 1) == NULL)
+            {
+                cout << "You can't go that way!" << endl;
+            }
+            else if (areaMap.at(areaLocationX).at(areaLocationY - 1)->locked == true)
             {
                 cout << "The door is locked." << endl;
             }
             else
             {
-                areaMap[areaLocationX][areaLocationY - 1]->enterArea();
+                areaMap.at(areaLocationX).at(areaLocationY - 1)->enterArea();
             }
         }
-        else
+        catch (const std::out_of_range& oor)
         {
             cout << "You can't go that way!" << endl;
         }
         break;
         case south:
-        if (areaMap[areaLocationX][areaLocationY + 1]!=NULL)
+        try
         {
-            if (areaMap[areaLocationX][areaLocationY + 1]->locked == true)
+            if (areaMap.at(areaLocationX).at(areaLocationY + 1) == NULL)
+            {
+                cout << "You can't go that way!" << endl;
+            }
+            else if (areaMap.at(areaLocationX).at(areaLocationY + 1)->locked == true)
             {
                 cout << "The door is locked." << endl;
             }
             else
             {
-                areaMap[areaLocationX][areaLocationY + 1]->enterArea();
+                areaMap.at(areaLocationX).at(areaLocationY + 1)->enterArea();
             }
         }
-        else
+        catch (const std::out_of_range& oor)
         {
             cout << "You can't go that way!" << endl;
         }
         break;
         case east:
-        if (areaMap[areaLocationX + 1][areaLocationY]!=NULL)
+        try
         {
-            if (areaMap[areaLocationX + 1][areaLocationY]->locked == true)
+            if (areaMap.at(areaLocationX + 1).at(areaLocationY) == NULL)
+            {
+                cout << "You can't go that way!" << endl;
+            }
+            else if (areaMap.at(areaLocationX + 1).at(areaLocationY)->locked == true)
             {
                 cout << "The door is locked." << endl;
             }
             else
             {
-                areaMap[areaLocationX + 1][areaLocationY]->enterArea();
+                areaMap.at(areaLocationX + 1).at(areaLocationY)->enterArea();
             }
         }
-        else
+        catch (const std::out_of_range& oor)
         {
             cout << "You can't go that way!" << endl;
         }
         break;
         case west:
-        if (areaMap[areaLocationX - 1][areaLocationY]!=NULL)
+        try
         {
-            if (areaMap[areaLocationX - 1][areaLocationY]->locked == true)
+            if (areaMap.at(areaLocationX - 1).at(areaLocationY) == NULL)
+            {
+                cout << "You can't go that way!" << endl;
+            }
+            else if (areaMap.at(areaLocationX - 1).at(areaLocationY)->locked == true)
             {
                 cout << "The door is locked." << endl;
             }
             else
             {
-                areaMap[areaLocationX - 1][areaLocationY]->enterArea();
+                areaMap.at(areaLocationX - 1).at(areaLocationY)->enterArea();
             }
         }
-        else
+        catch (const std::out_of_range& oor)
         {
             cout << "You can't go that way!" << endl;
         }

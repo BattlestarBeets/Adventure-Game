@@ -27,11 +27,11 @@ void player::setPlayerJob(eJob inJob)
     playerJob = inJob;
     switch (playerJob)
     {
-        case student: case mage: case cultist: playerHealth = 20;
+        case student: case mage: case cultist: playerHealth = 20; playerStats[maxHealth] = 20;
         break;
-        case rogue: playerHealth = 30;
+        case rogue: playerHealth = 30; playerStats[maxHealth] = 30;
         break;
-        case warrior: playerHealth = 40;
+        case warrior: playerHealth = 40; playerStats[maxHealth] = 40;
         break;
     }
 }

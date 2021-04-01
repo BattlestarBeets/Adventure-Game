@@ -143,7 +143,7 @@ void userInput()
     {
         cout << "What do you do?" << endl;
         string input;
-        getline(cin, input);
+        getline(cin >> std::ws, input);
         input = lowercase(input);
         vector<string> sentence;
         string temp = "";
