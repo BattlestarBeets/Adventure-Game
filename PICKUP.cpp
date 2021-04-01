@@ -65,44 +65,44 @@ void pickup::useItem()
         destroyItem();
         break;
         case key:
-        if (area::areaMap[currentArea->areaLocationX][currentArea->areaLocationY - 1] == itemLock)
+        if (area::areaMap.at(currentArea->areaLocationX).at(currentArea->areaLocationY - 1) == itemLock)
         {
-            area::areaMap[currentArea->areaLocationX][currentArea->areaLocationY - 1]->locked = false;
+            area::areaMap.at(currentArea->areaLocationX).at(currentArea->areaLocationY - 1)->locked = false;
             cout << "The door to the " <<
-            area::areaMap[currentArea->areaLocationX][currentArea->areaLocationY - 1]->areaName <<
+            area::areaMap.at(currentArea->areaLocationX).at(currentArea->areaLocationY - 1)->areaName <<
             "is now unlocked!" << endl;
             destroyItem();
-            area::areaMap[currentArea->areaLocationX][currentArea->areaLocationY - 1]->enterArea();
+            area::areaMap.at(currentArea->areaLocationX).at(currentArea->areaLocationY - 1)->enterArea();
             break;
         }
-        else if (area::areaMap[currentArea->areaLocationX][currentArea->areaLocationY + 1] == itemLock)
+        else if (area::areaMap.at(currentArea->areaLocationX).at(currentArea->areaLocationY + 1) == itemLock)
         {
-            area::areaMap[currentArea->areaLocationX][currentArea->areaLocationY + 1]->locked = false;
+            area::areaMap.at(currentArea->areaLocationX).at(currentArea->areaLocationY + 1)->locked = false;
             cout << "The door to the " <<
-            area::areaMap[currentArea->areaLocationX][currentArea->areaLocationY + 1]->areaName <<
+            area::areaMap.at(currentArea->areaLocationX).at(currentArea->areaLocationY + 1)->areaName <<
             "is now unlocked!" << endl;
             destroyItem();
-            area::areaMap[currentArea->areaLocationX][currentArea->areaLocationY + 1]->enterArea();
+            area::areaMap.at(currentArea->areaLocationX).at(currentArea->areaLocationY + 1)->enterArea();
             break;
         }
-        else if (area::areaMap[currentArea->areaLocationX + 1][currentArea->areaLocationY] == itemLock)
+        else if (area::areaMap.at(currentArea->areaLocationX + 1).at(currentArea->areaLocationY) == itemLock)
         {
-            area::areaMap[currentArea->areaLocationX + 1][currentArea->areaLocationY]->locked = false;
+            area::areaMap.at(currentArea->areaLocationX + 1).at(currentArea->areaLocationY)->locked = false;
             cout << "The door to the " <<
-            area::areaMap[currentArea->areaLocationX + 1][currentArea->areaLocationY]->areaName <<
+            area::areaMap.at(currentArea->areaLocationX + 1).at(currentArea->areaLocationY)->areaName <<
             "is now unlocked!" << endl;
             destroyItem();
-            area::areaMap[currentArea->areaLocationX + 1][currentArea->areaLocationY]->enterArea();
+            area::areaMap.at(currentArea->areaLocationX + 1).at(currentArea->areaLocationY)->enterArea();
             break;
         }
-        else if (area::areaMap[currentArea->areaLocationX - 1][currentArea->areaLocationY] == itemLock)
+        else if (area::areaMap.at(currentArea->areaLocationX - 1).at(currentArea->areaLocationY) == itemLock)
         {
-            area::areaMap[currentArea->areaLocationX - 1][currentArea->areaLocationY]->locked = false;
+            area::areaMap.at(currentArea->areaLocationX - 1).at(currentArea->areaLocationY)->locked = false;
             cout << "The door to the " <<
-            area::areaMap[currentArea->areaLocationX - 1][currentArea->areaLocationY]->areaName <<
+            area::areaMap.at(currentArea->areaLocationX - 1).at(currentArea->areaLocationY)->areaName <<
             "is now unlocked!" << endl;
             destroyItem();
-            area::areaMap[currentArea->areaLocationX - 1][currentArea->areaLocationY]->enterArea();
+            area::areaMap.at(currentArea->areaLocationX - 1).at(currentArea->areaLocationY)->enterArea();
             break;
         }
         else

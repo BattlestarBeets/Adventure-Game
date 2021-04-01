@@ -21,17 +21,18 @@ void getInventory()
 	{
 		cout << "Enter a number to view the item, or enter 0 to exit." << endl;
 		cin >> playerChoice;
+		//Needs input sanitation.
 		if (playerChoice != 0)
 		{
 			string use;
-			cout << p1->playerInventory[playerChoice - 1].getItemDesc() << endl;
-			cout << "Use the " << p1->playerInventory[playerChoice - 1].getItemName() << "?" << endl;
+			cout << p1->playerInventory.at(playerChoice - 1).getItemDesc() << endl;
+			cout << "Use the " << p1->playerInventory.at(playerChoice - 1).getItemName() << "?" << endl;
 			while (use[0] != 'y' && use[0] != 'n' && use[0] != 'N' && use[0] != 'Y')
 			{
 				getline(cin >> std::ws, use);
 				if (use[0] == 'y' || use[0] == 'Y')
 				{
-					p1->playerInventory[playerChoice - 1].useItem();
+					p1->playerInventory.at(playerChoice - 1).useItem();
 				}
 				else if (use[0] == 'n' || use[0] == 'N')
 				{
