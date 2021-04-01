@@ -17,7 +17,6 @@ void area::displayArea()
         {
             cout << "There is a(n) " << it.getItemName() << " here." << endl;
         }
-    cout << "There are " << areaItems.size() << " items here." << endl;
 }
 
 //Displays the area description, moves the player, and displays the area's exits.
@@ -94,7 +93,6 @@ void area::goDirection(eVerb direction)
             if (areaMap[areaLocationX][areaLocationY - 1]->locked == true)
             {
                 cout << "The door is locked." << endl;
-                enterArea();
             }
             else
             {
@@ -104,7 +102,6 @@ void area::goDirection(eVerb direction)
         else
         {
             cout << "You can't go that way!" << endl;
-            enterArea();
         }
         break;
         case south:
@@ -113,7 +110,6 @@ void area::goDirection(eVerb direction)
             if (areaMap[areaLocationX][areaLocationY + 1]->locked == true)
             {
                 cout << "The door is locked." << endl;
-                enterArea();
             }
             else
             {
@@ -123,7 +119,6 @@ void area::goDirection(eVerb direction)
         else
         {
             cout << "You can't go that way!" << endl;
-            enterArea();
         }
         break;
         case east:
@@ -132,7 +127,6 @@ void area::goDirection(eVerb direction)
             if (areaMap[areaLocationX + 1][areaLocationY]->locked == true)
             {
                 cout << "The door is locked." << endl;
-                enterArea();
             }
             else
             {
@@ -142,7 +136,6 @@ void area::goDirection(eVerb direction)
         else
         {
             cout << "You can't go that way!" << endl;
-            enterArea();
         }
         break;
         case west:
@@ -151,7 +144,6 @@ void area::goDirection(eVerb direction)
             if (areaMap[areaLocationX - 1][areaLocationY]->locked == true)
             {
                 cout << "The door is locked." << endl;
-                enterArea();
             }
             else
             {
@@ -161,7 +153,6 @@ void area::goDirection(eVerb direction)
         else
         {
             cout << "You can't go that way!" << endl;
-            enterArea();
         }
         break;
         default:
@@ -181,6 +172,7 @@ area::area(int X, int Y, string name)
     areaLocationY = Y;
     areaMap[X][Y] = this;
     areaName = name;
+    locked = false;
     vector<pickup> temp;
     areaItems = temp;
 }
