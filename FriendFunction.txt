@@ -1,17 +1,13 @@
 /*Pseudocode
-Billy, Mae, and Reese all start off in the Foyer. When the game load up, each character will display dialog telling an emotion about the creepy mansion, then they will go off into seperate rooms.
+Billy, Mai, and Reese all start off in the Foyer. When the game load up, each character will display dialog telling an emotion about the creepy mansion, then they will go off into seperate rooms.
 When the player goes to any one of these rooms, the player can interact with the character in said room. When the player picks their class, the people in the room will wander off into another room and get killed.
 Their bodies will be found in rooms further in the mansion near enemies.*/
 
-#include <iostream>
-#include <fstream>
-#include <string>
-using namespace std;
+#ifndef friendfunction.cpp
+#define friendfunction.hpp
 
-int main() 
-{
-	DialogueStuff();
-}
+#include "FriendFunction.hpp"
+using std::string; using std::cout; using std::endl;
 
 void DialogueStuff()
 {
@@ -67,5 +63,6 @@ void DialogueStuff()
 			cout << mai2;
 		}
 	}
-	
 }
+
+#endif

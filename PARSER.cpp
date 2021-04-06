@@ -27,6 +27,7 @@ std::map<string, eVerb> makeVerbMap()
     verbMap["equip"] = equip; verbMap["wield"] = equip; verbMap["wear"] = equip; verbMap["puton"] = equip;
     verbMap["use"] = use; verbMap["eat"] = use; verbMap["consume"] = use; verbMap["read"] = use;
     verbMap["drink"] = use;
+    verbMap["inventory"] = inventory; verbMap["i"] = inventory;
     return verbMap;
 }
 
@@ -85,29 +86,51 @@ bool parseInput(vector<string> sentence)
         }
         else
         {
+            bool looked = false;
             for (auto it : currentArea->areaItems)
             {
                 if (lowercase(it.getItemName()) == sentence[1])
                 {
                     cout << it.getItemDesc() << endl;
+                    looked = true;
                     break;
                 }
+            }
+            if (looked == false)
+            {
+                cout << "Nothing interesting there." << endl;
             }
         }
         break;
         //Default looks around the current room. If an item name is entered and that item is in the room,
         //returns the item description.
         case take:
-        for (auto it : currentArea->areaItems)
+        if (sentence.size() != 1)
         {
-            if (lowercase(it.getItemName()) == sentence[1])
+            bool taken = false;
+            for (auto it : currentArea->areaItems)
             {
-                it.takeItem();
-                break;
+                if (lowercase(it.getItemName()) == sentence[1])
+                {
+                    it.takeItem();
+                    taken = true;
+                    break;
+                }
             }
+            if (taken == false)
+            {
+                cout << "You can't take that." << endl;
+            }
+        }
+        else
+        {
+            cout << "Take what?" << endl;
         }
         break;
         //Checks if the item name entered matches an item in the current room. If it does, item is picked up.
+        case inventory:
+        getInventory();
+        break;
     }
     return true;
 }
@@ -119,7 +142,7 @@ void userInput()
     {
         cout << "What do you do?" << endl;
         string input;
-        getline(cin, input);
+        getline(cin >> std::ws, input);
         input = lowercase(input);
         vector<string> sentence;
         string temp = "";

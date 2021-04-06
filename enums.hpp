@@ -19,7 +19,8 @@ enum eVerb
     take = 5,
     look = 6,
     equip = 7,
-    use = 8
+    use = 8,
+    inventory = 9
 };
 
 //Enum to store usable item types.
