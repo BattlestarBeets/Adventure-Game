@@ -3,14 +3,28 @@
 #include <windows.h>
 using namespace std;
 
-int health = 50;
+int warriorHealth = 40;
+int rogueHealth = 30;
+int mageNecroHealth = 20;
 int corruption = 30;
 
 void Test()
 {
-    if (text == "health")
+    if (text == "health" || player == "Warrior")
     {
-        getHealth();
+        getWarriorHealth();
+    }
+    else if (text = "health" || player == "Rogue")
+    {
+        getRogueHealth();
+    }
+    else if (text == "health" || player == "Mage")
+    {
+        getMageNecroHealth();
+    }
+    else if (text == "health" || player == "Necromancer")
+    {
+        getMageNecroHealth();
     }
     else if (text == "corruption")
     {
@@ -18,25 +32,72 @@ void Test()
     }
 
 }
-//Functionality is to verify the users health bar 
-void getHealth()
+
+//Functionality is to verify the warriors health bar 
+void getWarriorHealth()
 {
-    if (100 >= health && health >= 70)
+    if (40 >= warriorHealth && warriorHealth >= 26)
     {
         system("Color 0A");
-        cout << "Health: Great | Current Percentage: " << health << "%" << endl;
+        cout << "Health: Great | Current Percentage: " << warriorHealth << "%" << endl;
         system("Color 07");
     }
-    else if (40 <= health && health <= 69)
+    else if (10 <= warriorHealth && warriorHealth <= 25)
     {
         system("Color 0E");//color changing 
-        cout << "Health: Ok |  Current Percentage: " << health << "%" << endl;
+        cout << "Health: Ok |  Current Percentage: " << warriorHealth << "%" << endl;
         system("Color 07");
     }
-    else if (0 <= health && health <= 39)
+    else if (0 <= warriorHealth && warriorHealth <= 9)
     {
         system("Color 0C");//color changing 
-        cout << "Health: Low | Current Percentage: " << health << "%" << endl;
+        cout << "Health: Low | Current Percentage: " << warriorHealth << "%" << endl;
+        system("Color 07");
+    }
+}
+
+//Functionality is to verify the rogues health bar 
+void getRogueHealth()
+{
+    if (30 >= health && health >= 20)
+    {
+        system("Color 0A");
+        cout << "Health: Great | Current Percentage: " << rogueHealth << "%" << endl;
+        system("Color 07");
+    }
+    else if (10 <= health && health <= 19)
+    {
+        system("Color 0E");//color changing 
+        cout << "Health: Ok |  Current Percentage: " << rogueHealth << "%" << endl;
+        system("Color 07");
+    }
+    else if (0 <= health && health <= 9)
+    {
+        system("Color 0C");//color changing 
+        cout << "Health: Low | Current Percentage: " << rogueHealth << "%" << endl;
+        system("Color 07");
+    }
+}
+
+//Functionality is to verify the mage/necromancers health bar 
+void getMageNecroHealth()
+{
+    if (20 >= health && health >= 13)
+    {
+        system("Color 0A");
+        cout << "Health: Great | Current Percentage: " << mageNecroHealth << "%" << endl;
+        system("Color 07");
+    }
+    else if (7 <= health && health <= 12)
+    {
+        system("Color 0E");//color changing 
+        cout << "Health: Ok |  Current Percentage: " << mageNecroHealth << "%" << endl;
+        system("Color 07");
+    }
+    else if (0 <= health && health <= 6)
+    {
+        system("Color 0C");//color changing 
+        cout << "Health: Low | Current Percentage: " << mageNecroHealth << "%" << endl;
         system("Color 07");
     }
 }
