@@ -1,0 +1,65 @@
+#include <iostream>
+#include <stdlib.h>
+#include <windows.h>
+using namespace std;
+
+int health = 50;
+int corruption = 30;
+
+void Test()
+{
+    if (text == "health")
+    {
+        getHealth();
+    }
+    else if (text == "corruption")
+    {
+        getCorruption();
+    }
+
+}
+//Functionality is to verify the users health bar 
+void getHealth()
+{
+    if (100 >= health && health >= 70)
+    {
+        system("Color 0A");
+        cout << "Health: Great | Current Percentage: " << health << "%" << endl;
+        system("Color 07");
+    }
+    else if (40 <= health && health <= 69)
+    {
+        system("Color 0E");//color changing 
+        cout << "Health: Ok |  Current Percentage: " << health << "%" << endl;
+        system("Color 07");
+    }
+    else if (0 <= health && health <= 39)
+    {
+        system("Color 0C");//color changing 
+        cout << "Health: Low | Current Percentage: " << health << "%" << endl;
+        system("Color 07");
+    }
+}
+
+void getCorruption()
+{
+    if (100 >= corruption && corruption >= 70)
+    {
+        system("Color 0C");
+        cout << "Corruption: High | Current Percentage: " << corruption << "%" << endl;
+        system("Color 07");
+    }
+    else if (40 <= corruption && corruption <= 69)
+    {
+        system("Color 0E");//color changing 
+        cout << "Corruption: Medium | Current Percentage: " << corruption << "%" << endl;
+        system("Color 07");
+    }
+    else if (0 <= corruption && corruption <= 39)
+    {
+        system("Color 0A");//color changing 
+        cout << "Corruption: Low | Current Percentage: " << corruption << "%" << endl;
+        system("Color 07");
+    }
+}
+
