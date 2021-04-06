@@ -9,6 +9,7 @@ class pickup;
 #include "pickup.hpp"
 #include "player.hpp"
 #include "enums.hpp"
+#include "mobs.hpp"
 using std::string; using std::vector;
 
 class area
@@ -38,6 +39,8 @@ class area
     vector <pickup> areaItems; //Vector containing any usable items or other pickups
     //in the current room.
     void addItem(pickup);
+    mob* areaEnemy;
+    void addEnemy(mob*);
 };
 
 #endif

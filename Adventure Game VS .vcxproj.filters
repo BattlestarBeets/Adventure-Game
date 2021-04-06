@@ -36,6 +36,12 @@
     <ClCompile Include="testMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="mageClass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mobs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="area.hpp">
@@ -54,6 +60,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="player.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mobs.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mageClass.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

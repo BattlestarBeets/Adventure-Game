@@ -174,6 +174,14 @@ void area::addItem(pickup item)
     areaItems.push_back(item);
 }
 
+
+void area::addEnemy(mob* enemy)
+{
+    areaEnemy = enemy;
+
+}
+
+
 //Basic constructor for an area.
 area::area(int X, int Y, string name)
 {

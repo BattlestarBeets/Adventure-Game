@@ -91,5 +91,13 @@ void areaSetup()
     );
     pickup* apple4 = new pickup(*library, cure, "apple", "A shiny red apple that restores 5 health.", 5); //places an apple in corresponding room
     library->addItem(*apple4);
+
+
+    //ROOM NORTH OF SWORD ROOM: CORRIDOR
+    area* corridor = new area(2, 1, "Corridor");
+    corridor->setAreaDescription("\nYou walk deeper into a 'corridor'. It is dimly lit and damp. You hear a scurrying sound.\n");
+    mob* rat1 = new mob("rat", "A large rat the size of a dog with saliva dripping from its fangs.", 5, 2); //creates enemy
+    corridor->addEnemy(rat1); //puts enemy in room
+        
 }
 #endif
