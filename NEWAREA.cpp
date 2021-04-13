@@ -108,7 +108,7 @@ void areaSetup()
     //ROOM NORTH OF SWORD ROOM: CORRIDOR
     area* corridor = new area(2, 1, "Corridor");
     corridor->setAreaDescription("\nYou walk deeper into a 'corridor'. It is dimly lit and damp. You hear a scurrying sound.\n");
-    mob* rat1 = new mob("rat", "A large rat the size of a dog with saliva dripping from its fangs.", "The rat bites you.", 5, 2); //creates enemy
+    mob* rat1 = new mob("rat", "A large rat the size of a dog with saliva dripping from its fangs.", "bites", 5, 2); //creates enemy
     corridor->addEnemy(rat1); //puts enemy in room
         
 }
