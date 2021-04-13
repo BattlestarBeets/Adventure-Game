@@ -17,13 +17,14 @@ private:
 	
 	string enemyName;
 	string enemyDescription;
+	string enemyAttackDesc;
 	
 
 	pickup* enemyDrop;
 
 
 public:
-	mob(string, string, int, int); //Basic constructor ; mob(mobName, mobDescription, health, damage)
+	mob(string, string, string, int, int); //Basic constructor ; mob(mobName, mobDescription, attackDesc, health, damage)
 	mob(string, string, int, int, pickup*); //Basic constructor ; mob(mobName, mobDescription, health, damage, mobDrop)
 
 	int enemyHealth;
@@ -31,6 +32,8 @@ public:
 
 	void enemyDeathCheck();
 	void enemyAttack();
+
+	string getEnemyName() { return enemyName; }
 
 };
 

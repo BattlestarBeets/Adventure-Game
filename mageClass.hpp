@@ -9,7 +9,7 @@
 using std::string;
 
 /* ATTACKS */
-void fireball(); //fire ball attack
+void fireballSpell(); //fire ball attack
 
 
 

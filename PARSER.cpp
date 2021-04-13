@@ -28,6 +28,7 @@ std::map<string, eVerb> makeVerbMap()
     verbMap["use"] = use; verbMap["eat"] = use; verbMap["consume"] = use; verbMap["read"] = use;
     verbMap["drink"] = use;
     verbMap["inventory"] = inventory; verbMap["i"] = inventory;
+    verbMap["fireball"] = fireball;
     return verbMap;
 }
 
@@ -45,7 +46,7 @@ bool parseInput(vector<string> sentence)
     for (int i = 0; i < sentence.size();)
     {
         if (sentence[i] == "at" || sentence[i] == "go" || sentence[i] == "the" || 
-        sentence[i] == "a" || sentence[i] == "an" || sentence[i] == "to")
+        sentence[i] == "a" || sentence[i] == "an" || sentence[i] == "to" || sentence[i] == "cast")
         {
             sentence.erase(sentence.begin() + i);
         }
@@ -131,7 +132,18 @@ bool parseInput(vector<string> sentence)
         case inventory:
         getInventory();
         break;
+        case fireball:
+        fireballSpell();
+        break;
     }
+
+    if (currentArea->areaEnemy->enemyHealth > 0)
+    {
+        currentArea->areaEnemy->enemyAttack();
+        //hurtPlayer function already created in player.cpp could call this here and get rid of the ifplayerhealth statement below??? 
+    }
+
+
     return true;
 }
 

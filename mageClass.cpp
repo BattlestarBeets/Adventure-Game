@@ -9,7 +9,7 @@
 #include <string>
 
 
-void fireball(mob target)
+void fireballSpell(mob target)
 {
 	int damage = 5;
 

@@ -1,6 +1,7 @@
 //Area class written by JS, 02/27/21.
 
 class pickup;
+class mob;
 
 #ifndef area_hpp
 #define area_hpp
@@ -10,6 +11,7 @@ class pickup;
 #include "player.hpp"
 #include "enums.hpp"
 #include "mobs.hpp"
+#include "mageClass.hpp"
 using std::string; using std::vector;
 
 class area
@@ -41,6 +43,7 @@ class area
     void addItem(pickup);
     mob* areaEnemy;
     void addEnemy(mob*);
+    void fightSequence();
 };
 
 #endif

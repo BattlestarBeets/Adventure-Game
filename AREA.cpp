@@ -14,9 +14,13 @@ void area::displayArea()
 {
     cout << areaDescription << endl;
     for (auto it : areaItems)
-        {
-            cout << "There is a(n) " << it.getItemName() << " here." << endl;
-        }
+    {
+        cout << "There is a(n) " << it.getItemName() << " here." << endl;
+    }
+    if (areaEnemy != NULL)
+    {
+        cout << "There is an enemy " << areaEnemy->getEnemyName() << " here." << endl;
+    }
 }
 
 //Displays the area description, moves the player, and displays the area's exits.
@@ -108,6 +112,41 @@ void area::findExits()
 void area::setAreaDescription(string description)
 {
     areaDescription = description;
+}
+
+void area::fightSequence()
+{
+    player* p1 = player::getPlayer();
+
+
+    while ((p1->playerHealth > 0) && (areaEnemy->enemyHealth > 0))
+    {
+        switch (attack)
+        {
+            case fireball:
+            try
+            {
+                fireballSpell(mob * enemy);    
+
+                if (areaEnemy->enemyHealth > 0)
+                {
+                    currentArea->areaEnemy->enemyAttack();
+                    //hurtPlayer function already created in player.cpp could call this here and get rid of the ifplayerhealth statement below??? 
+                }
+            }
+            break;
+        }
+    }
+
+    if (p1->playerHealth <= 0)
+    {
+        p1->killPlayer();
+    }
+    
+    if (areaEnemy->enemyHealth <= 0)
+    {
+        areaEnemy->enemyDeathCheck();
+    }
 }
 
 //Moves the player in a given direction.
@@ -227,6 +266,7 @@ area::area(int X, int Y, string name)
     locked = false;
     vector<pickup> temp;
     areaItems = temp;
+    areaEnemy = NULL;
 }
 
 //Constructor for locked rooms.
@@ -239,6 +279,7 @@ area::area(int X, int Y, string name, bool lock)
     locked = lock;
     vector<pickup> temp;
     areaItems = temp;
+    areaEnemy = NULL;
 }
 
 //Constructor for areas that don't fit on the map.
@@ -247,6 +288,7 @@ area::area(string name)
     areaName = name;
     vector<pickup> temp;
     areaItems = temp;
+    areaEnemy = NULL;
 }
 
 //Use for areas the player is not in.

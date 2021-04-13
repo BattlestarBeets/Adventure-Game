@@ -11,6 +11,8 @@
 #include "player.hpp"
 #include "enums.hpp"
 #include "InventoryList.hpp"
+#include "mobs.hpp"
+#include "mageClass.hpp"
 using std::string; using std::vector;
 
 string lowercase(string);
