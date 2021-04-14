@@ -104,12 +104,35 @@ void areaSetup()
     pickup* apple4 = new pickup(*library, cure, "apple", "A shiny red apple that restores 5 health.", 5); //places an apple in corresponding room
     library->addItem(*apple4);
 
-
     //ROOM NORTH OF SWORD ROOM: CORRIDOR
     area* corridor = new area(2, 1, "Corridor");
     corridor->setAreaDescription("\nYou walk deeper into a 'corridor'. It is dimly lit and damp. You hear a scurrying sound.\n");
     mob* rat1 = new mob("rat", "A large rat the size of a dog with saliva dripping from its fangs.", "The rat bites you.", 5, 2); //creates enemy
     corridor->addEnemy(rat1); //puts enemy in room
+
+    //ROOM WEST OF LIBRARY: STUDY
+    area* study = new area(4, 3, "Study");
+    study->setAreaDescription("\nYou open the door and find yourself in a 'study'. It is candle lit and surrounded by book shelves. You hear a scurrying sound.\n");
+    mob* rat2 = new mob("rat", "A large rat the size of a dog with saliva dripping from its fangs.", "The rat bites you.", 5, 2); //creates enemy
+    study->addEnemy(rat2); //puts enemy in room
+
+    //ROOM EAST OF CEMETERY: GARDEN
+    area* garden = new area(1, 4, "Garden");
+    garden->setAreaDescription("\nYou continue further on the grounds and enter the 'garden'. Damp, rotted rose bushes line the perimeter. You hear a scurrying sound.\n");
+    mob* rat3 = new mob("rat", "A large rat the size of a dog with saliva dripping from its fangs.", "The rat bites you.", 5, 2); //creates enemy
+    garden->addEnemy(rat3); //puts enemy in room
+
+    //ROOM EAST OF KITCHEN: DINING ROOM
+    area* diningRoom = new area(0, 3, "Dining Room");
+    diningRoom->setAreaDescription("\nYou walk into the 'dining room' and see a broken table. Dust is heavy in the air. You hear a scurrying sound.");
+    mob* rat4 = new mob("rat", "A large rat the size of a dog with saliva dripping from its fangs.", "The rat bites you.", 5, 2); //creates enemy
+    diningRoom->addEnemy(rat4); //puts enemy in room
+
+    //LOCKED ROOM: BUTLERS ROOM
+    area* butlersRoom = new area(0, 3, "Butler's Room", 1);
+    butlersRoom->setAreaDescription("\nYou walk into the 'Butler's Room' and are overcome with the stench of rot and decay. Panic sets in as your eyes set on the animated grotesque corpse of the butler.\n");
+    mob* butler = new mob("butler", "The animated corpse of the mansion's butler. Surely he was the victim of the scientists experiments gone wrong. The butler may have cuased the downfall as well.", "The butler lunges at you.", 25, 7); //creates enemy
+    butlersRoom->addEnemy(butler); //puts enemy in room
         
 }
 #endif
