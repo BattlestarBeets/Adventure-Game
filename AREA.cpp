@@ -18,7 +18,7 @@ void area::displayArea()
     {
         cout << "There is a(n) " << it.getItemName() << " here." << endl;
     }
-    if (areaEnemy != NULL)
+    if (areaEnemy != nullptr)
     {
         cout << "There is an enemy " << areaEnemy->getEnemyName() << " here." << endl;
     }
@@ -118,14 +118,17 @@ void area::setAreaDescription(string description)
 void area::fightSequence()
 {
     player* p1 = player::getPlayer();
-    areaEnemy->enemyAttack();
-    if (p1->playerHealth <= 0)
-    {
-        p1->killPlayer();
-    }
     if (areaEnemy->enemyHealth <= 0)
     {
         areaEnemy->enemyDeathCheck();
+    }
+    if (areaEnemy != nullptr)
+    {
+        areaEnemy->enemyAttack();
+    }
+    if (p1->playerHealth <= 0)
+    {
+        p1->killPlayer();
     }
     showHealth();
 }

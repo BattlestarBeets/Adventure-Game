@@ -18,7 +18,6 @@ private:
 	string enemyName;
 	string enemyDescription;
 	string enemyAttackDesc;
-	
 	pickup* enemyDrop;
 
 

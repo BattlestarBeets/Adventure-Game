@@ -178,7 +178,7 @@ void pickup::equipWeapon()
     p1->playerWeapon = this;
     if (p1->getJob() == student)
     {
-        cout << "You are now a " << itemJob << "! If there is a creature in your current location,\n"
+        cout << "You are now a mage! If there is a creature in your current location,\n"
         "you can type 'cast fireball' to give it what for." << endl;
     }
     p1->setPlayerJob(itemJob);

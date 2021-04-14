@@ -19,7 +19,7 @@ mob::mob(string name, string desc, string attackDesc, int health, int damage)
     enemyAttackDamage = damage;
 }
 
-mob::mob(string name, string desc, string attackDesc, int health, int damage, *pickup mobDrop)
+mob::mob(string name, string desc, string attackDesc, int health, int damage, pickup* mobDrop)
 {
     enemyName = name;
     enemyDescription = desc;
@@ -32,10 +32,9 @@ mob::mob(string name, string desc, string attackDesc, int health, int damage, *p
 void mob::enemyDeathCheck()
 {
     area* currentArea = area::getCurrentArea();
-    if (enemyHealth >= 0)
+    if (enemyHealth <= 0)
     {
-        this = NULL;
-        currentArea->areaEnemy = NULL;
+        currentArea->areaEnemy = nullptr;
         cout << "You have slain the " << enemyName << "!" << endl;
         if (enemyName == "butler")
         {

@@ -1,7 +1,7 @@
 //This file exists to avoid linker errors.
 
-#ifndef parser_h
-#define parser_h
+#ifndef parser_hpp
+#define parser_hpp
 #include <locale>
 #include <string>
 #include <iostream>

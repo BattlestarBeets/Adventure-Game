@@ -24,7 +24,7 @@ std::map<string, eVerb> makeVerbMap()
     verbMap["east"] = east; verbMap["e"] = east;
     verbMap["west"] = west; verbMap["w"] = west;
     verbMap["take"] = take; verbMap["get"] = take; verbMap["pickup"] = take;
-    verbMap["equip"] = equip; verbMap["wield"] = equip; verbMap["wear"] = equip; verbMap["puton"] = equip;
+    verbMap["equip"] = take; verbMap["wield"] = take; verbMap["wear"] = take; verbMap["puton"] = take;
     verbMap["use"] = use; verbMap["eat"] = use; verbMap["consume"] = use; verbMap["read"] = use;
     verbMap["drink"] = use;
     verbMap["inventory"] = inventory; verbMap["i"] = inventory;
@@ -163,16 +163,28 @@ bool parseInput(vector<string> sentence)
         {
             cout << "Use what?" << endl;
         }
+        break;
         case cast:
         if (sentence.size() != 1)
         {
-            if (lowercase(sentence[1]) == "fireball")
+            if (p1->getJob() != mage)
             {
-                fireballSpell();
+                cout << "You're not a mage." << endl;
+            }
+            else if (lowercase(sentence[1]) == "fireball")
+            {
+                if (currentArea->areaEnemy != nullptr)
+                {
+                    fireballSpell(currentArea->areaEnemy);
+                }
+                else
+                {
+                    cout << "There's nothing to incinerate here." << endl;
+                }
             }
             else
             {
-                cout << "You can't cast that." << endl;
+                cout << "You can't cast that spell." << endl;
             }
         }
         else
@@ -181,7 +193,7 @@ bool parseInput(vector<string> sentence)
         }
         break;
     }
-    if (currentArea->areaEnemy->enemyHealth > 0)
+    if (currentArea->areaEnemy != nullptr)
     {
         currentArea->fightSequence();
     }

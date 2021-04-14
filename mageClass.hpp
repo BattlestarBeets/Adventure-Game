@@ -9,12 +9,12 @@
 using std::string;
 
 /* ATTACKS */
-void fireballSpell(); //fire ball attack
-void lightningBoltSpell();
-void iceShardSpell();
+void fireballSpell(mob*); //fire ball attack
+void lightningBoltSpell(mob*);
+void iceShardSpell(mob*);
 
 /* DEFENSIVE */
-void ironSkinSpell();
+//void ironSkinSpell();
 
 /* HEALING */
 void healingSpell();

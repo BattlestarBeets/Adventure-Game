@@ -42,7 +42,8 @@ void areaSetup()
     "armored knight statue holding a SWORD beneath it.");
     pickup* sword = new pickup(misc, "sword", "A beautiful, shiny sword. Sadly, it does nothing.", 0);
     pickup* apple1 = new pickup(cure, "apple", "A shiny red apple that restores 5 health.", 5); //creates the apple
-    swordRoom->addItem(*apple1);// places apple in room
+    swordRoom->addItem(*apple1);
+    swordRoom->addItem(*sword);
 
     //ROOM TO THE SOUTH: GRAVEYARD/CEMETERY INITIALIZATION
     area* graveyard = new area (2, 4, "Graveyard");
@@ -69,8 +70,7 @@ void areaSetup()
     "is made of bone leading to a heavy pendant. The pendant has silver metalwork\n"
     "framing a crow head with a ruby in its beak.\n");
     pickup* necklace = new pickup(misc, "necklace", "A beautiful pendant. Sadly, it does nothing.", 0);
-    pickup* apple2 = new pickup(cure, "apple", "A shiny red apple that restores 5 health.", 5); //places an apple in corresponding room
-    graveyard->addItem(*apple2);
+    graveyard->addItem(*necklace);
 
     //ROOM TO THE EAST: KITCHEN INITIALIZATION
     area* kitchen = new area (1, 3, "Kitchen");
@@ -85,8 +85,7 @@ void areaSetup()
     "the room. You walk closer to the center island and notice a dull KNIFE lodged in\n"
     "a chopping block, with dried blood on its edge.\n");
     pickup* knife = new pickup(misc, "knife", "A knife. Sadly, it does nothing.", 0);
-    pickup* apple3 = new pickup(cure, "apple", "A shiny red apple that restores 5 health.", 5); //places an apple in corresponding room
-    kitchen->addItem(*apple3);
+    kitchen->addItem(*knife);
 
     //ROOM TO THE WEST: LIBRARY INITIALIZATION
     area* library = new area (3, 3, "Library");
@@ -102,8 +101,7 @@ void areaSetup()
     "the middle. A belt buckle keeps the book closed. You feel an excited chill run\n"
     "up your arms. It's almost as if the book is whispering for you.\n");
     pickup* grimoire = new pickup(weapon, mage, "book", "A book. It lets you cast spells.", 5);
-    pickup* apple4 = new pickup(cure, "apple", "A shiny red apple that restores 5 health.", 5); //places an apple in corresponding room
-    library->addItem(*apple4);
+    library->addItem(*grimoire);
 
     //ROOM NORTH OF SWORD ROOM: CORRIDOR
     area* corridor = new area(2, 1, "Corridor");
