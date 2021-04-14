@@ -23,7 +23,7 @@ std::map<string, eVerb> makeVerbMap()
     verbMap["south"] = south; verbMap["s"] = south;
     verbMap["east"] = east; verbMap["e"] = east;
     verbMap["west"] = west; verbMap["w"] = west;
-    verbMap["take"] = take; verbMap["get"] = take; verbMap["pickup"] = take;
+    verbMap["take"] = take; verbMap["get"] = take; verbMap["pickup"] = take; verbMap["grab"] = take;
     verbMap["equip"] = take; verbMap["wield"] = take; verbMap["wear"] = take; verbMap["puton"] = take;
     verbMap["use"] = use; verbMap["eat"] = use; verbMap["consume"] = use; verbMap["read"] = use;
     verbMap["drink"] = use;
@@ -97,7 +97,7 @@ bool parseInput(vector<string> sentence)
                     break;
                 }
             }
-            if (looked == false)
+            if (looked == false && currentArea->areaEnemy != nullptr)
             {
                 if (lowercase(currentArea->areaEnemy->getEnemyName()) == sentence[1])
                 {
