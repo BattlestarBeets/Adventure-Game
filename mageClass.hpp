@@ -10,6 +10,14 @@ using std::string;
 
 /* ATTACKS */
 void fireballSpell(); //fire ball attack
+void lightningBoltSpell();
+void iceShardSpell();
+
+/* DEFENSIVE */
+void ironSkinSpell();
+
+/* HEALING */
+void healingSpell();
 
 
 
