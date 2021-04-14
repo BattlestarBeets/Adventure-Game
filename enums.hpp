@@ -25,6 +25,6 @@ enum eVerb
 };
 
 //Enum to store usable item types.
-enum eUse {cure = 1, key = 2, page = 3, weapon = 4};
+enum eUse {cure = 1, key = 2, misc = 3, weapon = 4};
 
 #endif
