@@ -19,29 +19,45 @@ void getInventory()
 	int playerChoice;
 	if (i != 0)
 	{
-		cout << "Enter a number to view the item, or enter 0 to exit." << endl;
-		cin >> playerChoice;
-		//Needs input sanitation.
+		do
+		{
+			cout << "Enter a number to view the item, or enter 0 to exit." << endl;
+			cin >> playerChoice;
+			if (playerChoice != static_cast<int>(playerChoice))
+			{
+				cout << "Invalid entry." << endl;
+			}
+		}
+		while (playerChoice != static_cast<int>(playerChoice));
 		if (playerChoice != 0)
 		{
-			string use;
-			cout << p1->playerInventory.at(playerChoice - 1).getItemDesc() << endl;
-			cout << "Use the " << p1->playerInventory.at(playerChoice - 1).getItemName() << "?" << endl;
-			while (use[0] != 'y' && use[0] != 'n' && use[0] != 'N' && use[0] != 'Y')
+			try
 			{
-				getline(cin >> std::ws, use);
-				if (use[0] == 'y' || use[0] == 'Y')
+				pickup chosenItem = p1->playerInventory.at(playerChoice - 1);
+				cout << chosenItem.getItemDesc() << endl;
+				cout << "Use the " << chosenItem.getItemName() << "?" << endl;
+				string use;
+				while (use[0] != 'y' && use[0] != 'n' && use[0] != 'N' && use[0] != 'Y')
 				{
-					p1->playerInventory.at(playerChoice - 1).useItem();
+					getline(cin >> std::ws, use);
+					if (use[0] == 'y' || use[0] == 'Y')
+					{
+						chosenItem.useItem();
+					}
+					else if (use[0] == 'n' || use[0] == 'N')
+					{
+						getInventory();
+					}
+					else
+					{
+						cout << "Please enter Y or N." << endl;
+					}
 				}
-				else if (use[0] == 'n' || use[0] == 'N')
-				{
-					getInventory();
-				}
-				else
-				{
-					cout << "Please enter Y or N." << endl;
-				}
+			}
+	        catch (const std::out_of_range& oor)
+			{
+				cout << "No such item." << endl;
+				getInventory();
 			}
 		}
 	}

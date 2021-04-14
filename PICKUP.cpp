@@ -21,9 +21,9 @@ void pickup::takeItem()
         p1->playerInventory.push_back(*this);
         cout << "Picked up " << itemDisplayName << "!" << endl;
     }
+    int i = 0;
     for (auto it : currentArea->areaItems)
     {
-        int i = 0;
         if (it.itemDisplayName == this->itemDisplayName)
         {
             currentArea->areaItems.erase(currentArea->areaItems.begin() + i);
