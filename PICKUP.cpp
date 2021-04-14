@@ -31,6 +31,24 @@ void pickup::takeItem()
         }
         i++;
     }
+    if (itemDisplayName == "sword")
+    {
+        currentArea->setAreaDescription("You stand in the storage room. You took the sword;\n"
+        "nothing else here interests you.");
+    }
+    if (itemDisplayName == "necklace")
+    {
+        currentArea->setAreaDescription("You stand in the graveyard. It's spooky out here.");
+    }
+    if (itemDisplayName == "book")
+    {
+        currentArea->setAreaDescription("You stand in the library. None of the other books\n"
+        "look very interesting.");
+    }
+    if (itemDisplayName == "knife")
+    {
+        currentArea->setAreaDescription("You stand in the kitchen. You wish you weren't.");
+    }
 }
 
 //Finds and removes the item currently being used from the player inventory.

@@ -37,6 +37,10 @@ void mob::enemyDeathCheck()
         this = NULL;
         currentArea->areaEnemy = NULL;
         cout << "You have slain the " << enemyName << "!" << endl;
+        if (enemyName == "butler")
+        {
+            currentArea->setAreaDescription("You stand in the erstwhile butler's quarters.");
+        }
     }
 }
 
