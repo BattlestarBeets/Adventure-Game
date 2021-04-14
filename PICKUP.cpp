@@ -122,9 +122,26 @@ void pickup::useItem()
     }
 }
 
-pickup::pickup(area location, eUse function, string name, string desc, int variable) //pickup* itemName[1](roomName, itemType, itemName, itemDescription, healingAmount) //put this in NEWAREA.CPP
+pickup::pickup(eUse function, string name, string desc, int variable) //pickup* itemName[1](roomName, itemType, itemName, itemDescription, healingAmount) //put this in NEWAREA.CPP
 {
     itemFunction = function;
+    itemJob = student;
+    itemDescription = desc;
+    itemDisplayName = name;
+    if (function == cure)
+    {
+        itemHeal = variable;
+    }
+    else if (function == weapon)
+    {
+        weaponDamage = variable;
+    }
+}
+
+pickup::pickup(eUse function, eJob job, string name, string desc, int variable) //pickup* itemName[1](roomName, itemType, itemName, itemDescription, healingAmount) //put this in NEWAREA.CPP
+{
+    itemFunction = function;
+    itemJob = job;
     itemDescription = desc;
     itemDisplayName = name;
     if (function == cure)
@@ -141,6 +158,12 @@ void pickup::equipWeapon()
 {
     player* p1 = player::getPlayer();
     p1->playerWeapon = this;
+    if (p1->getJob() == student)
+    {
+        cout << "You are now a " << itemJob << "! If there is a creature in your current location,\n"
+        "you can type 'cast fireball' to give it what for." << endl;
+    }
+    p1->setPlayerJob(itemJob);
     cout << "Equipped " << itemDisplayName << "!" << endl;
 }
 

@@ -3,6 +3,7 @@
 #ifndef player_cpp
 #define player_cpp
 #include <iostream>
+#include <stdlib.h>
 #include "player.hpp"
 using std::cout; using std::cin; using std::string; using std::endl;
 
@@ -92,12 +93,14 @@ void player::modPlayerStat(eStat stat, int modification)
 void player::killPlayer()
 {
     cout << "Congratulations! You died." << endl;
+    exit(0);
 }
 
 //This will be expanded to account for what corrupted you.
 void player::badEnd()
 {
     cout << "You have suffered a fate worse than death." << endl;
+    exit(0);
 }
 
 //Call this in order to refer to the player.

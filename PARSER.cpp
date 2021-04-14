@@ -141,12 +141,38 @@ bool parseInput(vector<string> sentence)
         case inventory:
         getInventory();
         break;
+        case use:
+        if (sentence.size() != 1)
+        {
+            bool used = false;
+            for (auto it : p1->playerInventory)
+            {
+                if (lowercase(it.getItemName()) == sentence[1])
+                {
+                    it.useItem();
+                    used = true;
+                    break;
+                }
+            }
+            if (used == false)
+            {
+                cout << "You can't use that." << endl;
+            }
+        }
+        else
+        {
+            cout << "Use what?" << endl;
+        }
         case cast:
         if (sentence.size() != 1)
         {
             if (lowercase(sentence[1]) == "fireball")
             {
                 fireballSpell();
+            }
+            else
+            {
+                cout << "You can't cast that." << endl;
             }
         }
         else
@@ -157,8 +183,7 @@ bool parseInput(vector<string> sentence)
     }
     if (currentArea->areaEnemy->enemyHealth > 0)
     {
-        currentArea->areaEnemy->enemyAttack();
-        //hurtPlayer function already created in player.cpp could call this here and get rid of the ifplayerhealth statement below??? 
+        currentArea->fightSequence();
     }
     return true;
 }
