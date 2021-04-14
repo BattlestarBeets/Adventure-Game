@@ -27,9 +27,7 @@
 *.lib
 
 # Executables
-*.exe
 *.out
-*.app
 
 # Annoying files that keep cropping up
 *.DS_Store

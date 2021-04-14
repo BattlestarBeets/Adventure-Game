@@ -1,4 +1,5 @@
-﻿  NEWAREA.cpp
-  PARSER.cpp
+﻿  InventoryList.cpp
+  NEWAREA.cpp
+  PICKUP.cpp
   Generating Code...
   Adventure Game VS .vcxproj -> C:\Users\joey1\source\repos\BattlestarBeets\Adventure-Game\x64\Debug\Adventure Game VS .exe
