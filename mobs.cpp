@@ -29,6 +29,21 @@ mob::mob(string name, string desc, string attackDesc, int health, int damage, *p
     enemyDrop = mobDrop;
 }
 
+void mob::enemyDeathCheck()
+{
+    area* currentArea = area::getCurrentArea();
+    if (enemyHealth >= 0)
+    {
+        this = NULL;
+        currentArea->areaEnemy = NULL;
+        cout << "You have slain the " << enemyName << "!" << endl;
+        if (enemyName == "butler")
+        {
+            currentArea->setAreaDescription("You stand in the erstwhile butler's quarters.");
+        }
+    }
+}
+
 void mob::enemyAttack()
 {
     player* p1 = player::getPlayer();

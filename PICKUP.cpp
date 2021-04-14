@@ -31,6 +31,24 @@ void pickup::takeItem()
         }
         i++;
     }
+    if (itemDisplayName == "sword")
+    {
+        currentArea->setAreaDescription("You stand in the storage room. You took the sword;\n"
+        "nothing else here interests you.");
+    }
+    if (itemDisplayName == "necklace")
+    {
+        currentArea->setAreaDescription("You stand in the graveyard. It's spooky out here.");
+    }
+    if (itemDisplayName == "book")
+    {
+        currentArea->setAreaDescription("You stand in the library. None of the other books\n"
+        "look very interesting.");
+    }
+    if (itemDisplayName == "knife")
+    {
+        currentArea->setAreaDescription("You stand in the kitchen. You wish you weren't.");
+    }
 }
 
 //Finds and removes the item currently being used from the player inventory.
@@ -122,9 +140,26 @@ void pickup::useItem()
     }
 }
 
-pickup::pickup(area location, eUse function, string name, string desc, int variable) //pickup* itemName[1](roomName, itemType, itemName, itemDescription, healingAmount) //put this in NEWAREA.CPP
+pickup::pickup(eUse function, string name, string desc, int variable) //pickup* itemName[1](roomName, itemType, itemName, itemDescription, healingAmount) //put this in NEWAREA.CPP
 {
     itemFunction = function;
+    itemJob = student;
+    itemDescription = desc;
+    itemDisplayName = name;
+    if (function == cure)
+    {
+        itemHeal = variable;
+    }
+    else if (function == weapon)
+    {
+        weaponDamage = variable;
+    }
+}
+
+pickup::pickup(eUse function, eJob job, string name, string desc, int variable) //pickup* itemName[1](roomName, itemType, itemName, itemDescription, healingAmount) //put this in NEWAREA.CPP
+{
+    itemFunction = function;
+    itemJob = job;
     itemDescription = desc;
     itemDisplayName = name;
     if (function == cure)
@@ -141,6 +176,12 @@ void pickup::equipWeapon()
 {
     player* p1 = player::getPlayer();
     p1->playerWeapon = this;
+    if (p1->getJob() == student)
+    {
+        cout << "You are now a " << itemJob << "! If there is a creature in your current location,\n"
+        "you can type 'cast fireball' to give it what for." << endl;
+    }
+    p1->setPlayerJob(itemJob);
     cout << "Equipped " << itemDisplayName << "!" << endl;
 }
 

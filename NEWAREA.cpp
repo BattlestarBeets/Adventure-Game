@@ -40,7 +40,8 @@ void areaSetup()
     "trash them, when a crashing sound causes you to jump and look to the right.\n"
     "A mouse has caused one of the trinket mountains to collapse, revealing an\n"
     "armored knight statue holding a SWORD beneath it.");
-    pickup* apple1 = new pickup(*swordRoom, cure, "apple", "A shiny red apple that restores 5 health.", 5); //creates the apple
+    pickup* sword = new pickup(misc, "sword", "A beautiful, shiny sword. Sadly, it does nothing.", 0);
+    pickup* apple1 = new pickup(cure, "apple", "A shiny red apple that restores 5 health.", 5); //creates the apple
     swordRoom->addItem(*apple1);// places apple in room
 
     //ROOM TO THE SOUTH: GRAVEYARD/CEMETERY INITIALIZATION
@@ -66,9 +67,9 @@ void areaSetup()
     "extend outward with cupped hands. The moon acts as a spotlight into her cupped\n"
     "fingers and you notice a small NECKLACE resting in her palms. The necklace chain\n"
     "is made of bone leading to a heavy pendant. The pendant has silver metalwork\n"
-    "framing a crow head with a ruby in its beak.\n"
-    );
-    pickup* apple2 = new pickup(*graveyard, cure, "apple", "A shiny red apple that restores 5 health.", 5); //places an apple in corresponding room
+    "framing a crow head with a ruby in its beak.\n");
+    pickup* necklace = new pickup(misc, "necklace", "A beautiful pendant. Sadly, it does nothing.", 0);
+    pickup* apple2 = new pickup(cure, "apple", "A shiny red apple that restores 5 health.", 5); //places an apple in corresponding room
     graveyard->addItem(*apple2);
 
     //ROOM TO THE EAST: KITCHEN INITIALIZATION
@@ -82,9 +83,9 @@ void areaSetup()
     "spiders residing in corner cobwebs. The center island houses an ornate bowl\n"
     "filled with dried, rotted fruit resulting in a pungent sweet smell lingering in\n"
     "the room. You walk closer to the center island and notice a dull KNIFE lodged in\n"
-    "a chopping block, with dried blood on its edge.\n"
-    );
-    pickup* apple3 = new pickup(*kitchen, cure, "apple", "A shiny red apple that restores 5 health.", 5); //places an apple in corresponding room
+    "a chopping block, with dried blood on its edge.\n");
+    pickup* knife = new pickup(misc, "knife", "A knife. Sadly, it does nothing.", 0);
+    pickup* apple3 = new pickup(cure, "apple", "A shiny red apple that restores 5 health.", 5); //places an apple in corresponding room
     kitchen->addItem(*apple3);
 
     //ROOM TO THE WEST: LIBRARY INITIALIZATION
@@ -96,43 +97,53 @@ void areaSetup()
     "sits, lit up by an overhanging chandelier. A thick layer of dust accompanies\n"
     "every inch of the room and cough as the dust covers your throat when you inhale.\n"
     "It smells heavy and antique in this room. Approaching the table, you can make\n"
-    "out various items cluttering the edges with a leatherbound book at its center.\n"
+    "out various items cluttering the edges with a leatherbound BOOK at its center.\n"
     "The book is closed, its cover decorated in metal work with a single emerald in\n"
     "the middle. A belt buckle keeps the book closed. You feel an excited chill run\n"
-    "up your arms. It's almost as if the book is whispering for you.\n"
-    );
-    pickup* apple4 = new pickup(*library, cure, "apple", "A shiny red apple that restores 5 health.", 5); //places an apple in corresponding room
+    "up your arms. It's almost as if the book is whispering for you.\n");
+    pickup* grimoire = new pickup(weapon, mage, "book", "A book. It lets you cast spells.", 5);
+    pickup* apple4 = new pickup(cure, "apple", "A shiny red apple that restores 5 health.", 5); //places an apple in corresponding room
     library->addItem(*apple4);
 
     //ROOM NORTH OF SWORD ROOM: CORRIDOR
     area* corridor = new area(2, 1, "Corridor");
-    corridor->setAreaDescription("\nYou walk deeper into a 'corridor'. It is dimly lit and damp. You hear a scurrying sound.\n");
+    corridor->setAreaDescription(
+    "\nYou walk deeper into a CORRIDOR. It is dimly lit and damp. You hear a\n"
+    "scurrying sound.\n");
     mob* rat1 = new mob("rat", "A large rat the size of a dog with saliva dripping from its fangs.", "bites", 5, 2); //creates enemy
     corridor->addEnemy(rat1); //puts enemy in room
 
     //ROOM WEST OF LIBRARY: STUDY
     area* study = new area(4, 3, "Study");
-    study->setAreaDescription("\nYou open the door and find yourself in a 'study'. It is candle lit and surrounded by book shelves. You hear a scurrying sound.\n");
-    mob* rat2 = new mob("rat", "A large rat the size of a dog with saliva dripping from its fangs.", "The rat bites you.", 5, 2); //creates enemy
+    study->setAreaDescription(
+    "\nYou open the door and find yourself in a STUDY. It is candle lit and\n"
+    "surrounded by bookshelves. You hear a scurrying sound.\n");
+    mob* rat2 = new mob("rat", "A large rat the size of a dog with saliva dripping from its fangs.", "bites", 5, 2); //creates enemy
     study->addEnemy(rat2); //puts enemy in room
 
     //ROOM EAST OF CEMETERY: GARDEN
     area* garden = new area(1, 4, "Garden");
-    garden->setAreaDescription("\nYou continue further on the grounds and enter the 'garden'. Damp, rotted rose bushes line the perimeter. You hear a scurrying sound.\n");
-    mob* rat3 = new mob("rat", "A large rat the size of a dog with saliva dripping from its fangs.", "The rat bites you.", 5, 2); //creates enemy
+    garden->setAreaDescription(
+    "\nYou continue further on the grounds and enter the GARDEN. Damp,\n"
+    "rotted rose bushes line the perimeter. You hear a scurrying sound.\n");
+    mob* rat3 = new mob("rat", "A large rat the size of a dog with saliva dripping from its fangs.", "bites", 5, 2); //creates enemy
     garden->addEnemy(rat3); //puts enemy in room
 
     //ROOM EAST OF KITCHEN: DINING ROOM
     area* diningRoom = new area(0, 3, "Dining Room");
-    diningRoom->setAreaDescription("\nYou walk into the 'dining room' and see a broken table. Dust is heavy in the air. You hear a scurrying sound.");
-    mob* rat4 = new mob("rat", "A large rat the size of a dog with saliva dripping from its fangs.", "The rat bites you.", 5, 2); //creates enemy
+    diningRoom->setAreaDescription(
+    "\nYou walk into the DINING ROOM and see a broken table. Dust is\n"
+    "heavy in the air. You hear a scurrying sound.");
+    mob* rat4 = new mob("rat", "A large rat the size of a dog with saliva dripping from its fangs.", "bites", 5, 2); //creates enemy
     diningRoom->addEnemy(rat4); //puts enemy in room
 
     //LOCKED ROOM: BUTLERS ROOM
-    area* butlersRoom = new area(0, 3, "Butler's Room", 1);
-    butlersRoom->setAreaDescription("\nYou walk into the 'Butler's Room' and are overcome with the stench of rot and decay. Panic sets in as your eyes set on the animated grotesque corpse of the butler.\n");
-    mob* butler = new mob("butler", "The animated corpse of the mansion's butler. Surely he was the victim of the scientists experiments gone wrong. The butler may have cuased the downfall as well.", "The butler lunges at you.", 25, 7); //creates enemy
-    butlersRoom->addEnemy(butler); //puts enemy in room
-        
+    area* butlerRoom = new area(0, 2, "Butler's Room", true);
+    butlerRoom->setAreaDescription(
+    "\nYou walk into the BUTLER'S ROOM and are overcome with the\n"
+    "stench of rot and decay. Panic sets in as your eyes set on\n"
+    "the grotesque, animate corpse of the butler.\n");
+    mob* butler = new mob("butler", "The animated corpse of the mansion's butler. Likely the first victim of the scientist's profane experiments.", "strikes", 25, 7); //creates enemy
+    butlerRoom->addEnemy(butler); //puts enemy in room
 }
 #endif

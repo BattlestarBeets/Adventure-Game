@@ -4,6 +4,7 @@
 #define area_cpp
 #include <iostream>
 #include "area.hpp"
+#include "HealthCorruptionCode.hpp"
 using std::cout; using std::cin; using std::string; using std::endl; using std::vector;
 
 //Defining here to avoid linker error.
@@ -117,36 +118,16 @@ void area::setAreaDescription(string description)
 void area::fightSequence()
 {
     player* p1 = player::getPlayer();
-
-
-    while ((p1->playerHealth > 0) && (areaEnemy->enemyHealth > 0))
-    {
-        switch (attack)
-        {
-            case fireball:
-            try
-            {
-                fireballSpell(mob * enemy);    
-
-                if (areaEnemy->enemyHealth > 0)
-                {
-                    currentArea->areaEnemy->enemyAttack();
-                    //hurtPlayer function already created in player.cpp could call this here and get rid of the ifplayerhealth statement below??? 
-                }
-            }
-            break;
-        }
-    }
-
+    areaEnemy->enemyAttack();
     if (p1->playerHealth <= 0)
     {
         p1->killPlayer();
     }
-    
     if (areaEnemy->enemyHealth <= 0)
     {
         areaEnemy->enemyDeathCheck();
     }
+    showHealth();
 }
 
 //Moves the player in a given direction.
@@ -252,7 +233,6 @@ void area::addItem(pickup item)
 void area::addEnemy(mob* enemy)
 {
     areaEnemy = enemy;
-
 }
 
 

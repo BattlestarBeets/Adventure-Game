@@ -23,28 +23,27 @@ void fireballSpell(mob target)
 void lightningBoltSpell(mob target)
 {
 	srand(time(NULL));
-	int damage = rand() % 7 + 3;
+	int damage = rand() % 4 + 7;
 	target.enemyHealth -= damage;
-	cout << "You strike the " << target.getEnemyName() << " for " << damage << " damage!" << endl;
+	cout << "You shock the " << target.getEnemyName() << " for " << damage << " damage!" << endl;
 }
 
 void iceShardSpell(mob target)
 {
 	srand(time(NULL));
-	int damage = rand() % 9 + 2;
+	int damage = rand() % 3 + 9;
 	target.enemyHealth -= damage;
 	cout << "You freeze the " << target.getEnemyName() << " for " << damage << " damage!" << endl;
 }
 
 /* HEALING */
-//void healingSpell()
-//{
-//	srand(time(NULL));
-//	int healing = rand() % 7 + 4;
-//	//playerHealth=+ healing
-//	cout << "You heal yourself from " << healing << " damage!" << endl;
-//}
-
-
+void healingSpell()
+{
+	player* p1 = player::getPlayer();
+	srand(time(NULL));
+	int healing = rand() % 7 + 4;
+	p1->healPlayer(healing);
+	cout << "You heal yourself of " << healing << " damage!" << endl;
+}
 
 #endif
