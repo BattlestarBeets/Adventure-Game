@@ -28,7 +28,7 @@ std::map<string, eVerb> makeVerbMap()
     verbMap["use"] = use; verbMap["eat"] = use; verbMap["consume"] = use; verbMap["read"] = use;
     verbMap["drink"] = use;
     verbMap["inventory"] = inventory; verbMap["i"] = inventory;
-    verbMap["fireball"] = fireball;
+    verbMap["cast"] = cast;
     return verbMap;
 }
 
@@ -46,7 +46,7 @@ bool parseInput(vector<string> sentence)
     for (int i = 0; i < sentence.size();)
     {
         if (sentence[i] == "at" || sentence[i] == "go" || sentence[i] == "the" || 
-        sentence[i] == "a" || sentence[i] == "an" || sentence[i] == "to" || sentence[i] == "cast")
+        sentence[i] == "a" || sentence[i] == "an" || sentence[i] == "to" )
         {
             sentence.erase(sentence.begin() + i);
         }
@@ -99,6 +99,15 @@ bool parseInput(vector<string> sentence)
             }
             if (looked == false)
             {
+                if (lowercase(currentArea->areaEnemy->getEnemyName()) == sentence[1])
+                {
+                    cout << currentArea->areaEnemy->getEnemyDesc() << endl;
+                    looked = true;
+                    break;
+                }
+            }
+            if (looked == false)
+            {
                 cout << "Nothing interesting there." << endl;
             }
         }
@@ -132,18 +141,25 @@ bool parseInput(vector<string> sentence)
         case inventory:
         getInventory();
         break;
-        case fireball:
-        fireballSpell();
+        case cast:
+        if (sentence.size() != 1)
+        {
+            if (lowercase(sentence[1]) == "fireball")
+            {
+                fireballSpell();
+            }
+        }
+        else
+        {
+            cout << "Cast what?" << endl;
+        }
         break;
     }
-
     if (currentArea->areaEnemy->enemyHealth > 0)
     {
         currentArea->areaEnemy->enemyAttack();
         //hurtPlayer function already created in player.cpp could call this here and get rid of the ifplayerhealth statement below??? 
     }
-
-
     return true;
 }
 
