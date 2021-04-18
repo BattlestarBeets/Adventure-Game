@@ -14,8 +14,8 @@ class pickup
 {
     private:
     eUse itemFunction; //What the item does.
-    int itemHeal; //If the item is a cure, this is how much it heals.
-    int weaponDamage; //If the item is a weapon, this is its base damage.
+    unsigned int itemHeal; //If the item is a cure, this is how much it heals.
+    unsigned int weaponDamage; //If the item is a weapon, this is its base damage.
     eJob itemJob; //If the item is a weapon, this is the class it is used by.
     area* itemLock; //If the item is a key, this is the room it unlocks.
     string itemDescription; //The item's descriptor text.

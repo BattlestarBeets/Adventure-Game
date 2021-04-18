@@ -14,10 +14,6 @@ player::player(){}
 //Sets player name. Call upon creation and forget about it.
 void player::setPlayerName()
 {
-    string enteredName;
-    cout << "What is your name?" << endl;
-    getline(cin, enteredName);
-    playerName = enteredName;
     setPlayerJob(student);
 }
 
@@ -28,11 +24,13 @@ void player::setPlayerJob(eJob inJob)
     playerJob = inJob;
     switch (playerJob)
     {
-        case student: case mage: case cultist: playerHealth = 20; playerStats[maxHealth] = 20;
+        case student: playerHealth = 20; playerStats[maxHealth] = 20;
         break;
-        case rogue: playerHealth = 30; playerStats[maxHealth] = 30;
+        case mage: case cultist: playerStats[maxHealth] = 20;
         break;
-        case warrior: playerHealth = 40; playerStats[maxHealth] = 40;
+        case rogue: playerStats[maxHealth] = 30;
+        break;
+        case warrior: playerStats[maxHealth] = 40;
         break;
     }
 }
@@ -41,7 +39,7 @@ void player::setPlayerJob(eJob inJob)
 void player::hurtPlayer(int damage)
 {
     playerHealth -= damage;
-    if (playerHealth < 0) //If damage exceeds HP, die
+    if (playerHealth <= 0) //If damage exceeds HP, die
     {
         player::killPlayer();
     }
@@ -80,6 +78,22 @@ void player::purifyPlayer(int healing)
     else
     {
         playerCorruption -= healing;
+    }
+}
+
+void player::showHealth()
+{
+    if (playerHealth <= playerStats[0] && playerHealth >= (playerStats[0] * 0.75))
+    {
+        cout << "Your health: " << playerHealth << "/" << playerStats[0] << endl;
+    }
+    else if (playerHealth <= (playerStats[0] * 0.75) && playerHealth >= (playerStats[0] * 0.25))
+    {
+        cout << "Health: " << playerHealth << "/" << playerStats[0] << endl;
+    }
+    else if (playerHealth <= (playerStats[0] * 0.25) && playerHealth >= 0)
+    {
+        cout << "Health: " << playerHealth << "/" << playerStats[0] << endl;
     }
 }
 

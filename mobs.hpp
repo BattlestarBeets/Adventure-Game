@@ -25,8 +25,8 @@ public:
 	mob(string, string, string, int, int); //Basic constructor ; mob(mobName, mobDescription, attackDesc, health, damage)
 	mob(string, string, string, int, int, pickup*); //Basic constructor ; mob(mobName, mobDescription, health, damage, mobDrop)
 
-	int enemyHealth;
-	int enemyAttackDamage;
+	unsigned int enemyHealth;
+	unsigned int enemyAttackDamage;
 
 	void enemyDeathCheck();
 	void enemyAttack();

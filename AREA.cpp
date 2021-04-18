@@ -4,7 +4,6 @@
 #define area_cpp
 #include <iostream>
 #include "area.hpp"
-#include "HealthCorruptionCode.hpp"
 using std::cout; using std::cin; using std::string; using std::endl; using std::vector;
 
 //Defining here to avoid linker error.
@@ -130,7 +129,7 @@ void area::fightSequence()
     {
         p1->killPlayer();
     }
-    showHealth();
+    p1->showHealth();
 }
 
 //Moves the player in a given direction.
@@ -300,7 +299,7 @@ area* area::getArea(string name)
 area* area::getCurrentArea()
 {
     player* p1 = player::getPlayer();
-    return areaMap[p1->getPlayerX()][p1->getPlayerY()];
+    return areaMap[p1->playerLocationX][p1->playerLocationY];
 }
 
 #endif
