@@ -11,12 +11,6 @@ using std::cout; using std::cin; using std::string; using std::endl;
 player* player::p1;
 player::player(){}
 
-//Sets player name. Call upon creation and forget about it.
-void player::setPlayerName()
-{
-    setPlayerJob(student);
-}
-
 //Sets player's job and maxHealth. Call upon creation (as student) and when the
 //player picks up their starting weapon.
 void player::setPlayerJob(eJob inJob)
