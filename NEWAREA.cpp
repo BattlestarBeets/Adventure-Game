@@ -44,8 +44,6 @@ void areaSetup()
     "armored knight statue holding a SWORD beneath it.");
     pickup* sword = new pickup(misc, "sword", "A beautiful, shiny sword. Sadly, it does nothing.", 0);
     swordRoom->addItem(*sword);
-    pickup* apple2 = new pickup(cure, "apple", "A shiny red apple that restores 5 health.", 5); //creates the apple
-    swordRoom->addItem(*apple2);
 
     //ROOM TO THE SOUTH: GRAVEYARD/CEMETERY INITIALIZATION
     area* graveyard = new area (2, 4, "Graveyard");
@@ -73,8 +71,6 @@ void areaSetup()
     "framing a crow head with a ruby in its beak.\n");
     pickup* necklace = new pickup(misc, "necklace", "A beautiful pendant. Sadly, it does nothing.", 0);
     graveyard->addItem(*necklace);
-    pickup* apple3 = new pickup(cure, "apple", "A shiny red apple that restores 5 health.", 5); //creates the apple
-    graveyard->addItem(*apple3);
 
     //ROOM TO THE EAST: KITCHEN INITIALIZATION
     area* kitchen = new area (1, 3, "Kitchen");
@@ -86,12 +82,9 @@ void areaSetup()
     "the lack of use has caused it to deteriorate and its only inhabitants are the\n"
     "spiders residing in corner cobwebs. The center island houses an ornate bowl\n"
     "filled with dried, rotted fruit resulting in a pungent sweet smell lingering in\n"
-    "the room. You walk closer to the center island and notice a dull KNIFE lodged in\n"
-    "a chopping block, with dried blood on its edge.\n");
-    pickup* knife = new pickup(misc, "knife", "A knife. Sadly, it does nothing.", 0);
-    kitchen->addItem(*knife);
-    pickup* apple4 = new pickup(cure, "apple", "A shiny red apple that restores 5 health.", 5); //creates the apple
-    kitchen->addItem(*apple4);
+    "the room.\n");
+    pickup* apple1 = new pickup(cure, "apple", "A shiny red apple that restores 5 health.", 5); //creates the apple
+    kitchen->addItem(*apple1);
 
     //ROOM TO THE WEST: LIBRARY INITIALIZATION
     area* library = new area (3, 3, "Library");
@@ -108,15 +101,12 @@ void areaSetup()
     "up your arms. It's almost as if the book is whispering for you.\n");
     pickup* book = new pickup(weapon, mage, "book", "A book. It lets you cast spells.", 5);
     library->addItem(*book);
-    pickup* apple5 = new pickup(cure, "apple", "A shiny red apple that restores 5 health.", 5); //creates the apple
-    library->addItem(*apple5);
 
 
     //ROOM NORTH OF SWORD ROOM: CORRIDOR
     area* corridor = new area(2, 1, "Corridor");
     corridor->setAreaDescription(
-    "\nYou walk deeper into a CORRIDOR. It is dimly lit and damp. You hear a\n"
-    "scurrying sound.\n");
+    "\nYou walk deeper into a CORRIDOR. It is dimly lit and damp.\n");
     mob* rat1 = new mob("rat", "A large rat the size of a dog with saliva dripping from its fangs.", "bites", 5, 2); //creates enemy
     corridor->addEnemy(rat1); //puts enemy in room
 
@@ -124,7 +114,7 @@ void areaSetup()
     area* study = new area(4, 3, "Study");
     study->setAreaDescription(
     "\nYou open the door and find yourself in a STUDY. It is candle lit and\n"
-    "surrounded by bookshelves. You hear a scurrying sound.\n");
+    "surrounded by bookshelves.\n");
     mob* rat2 = new mob("rat", "A large rat the size of a dog with saliva dripping from its fangs.", "bites", 5, 2); //creates enemy
     study->addEnemy(rat2); //puts enemy in room
 
@@ -132,7 +122,7 @@ void areaSetup()
     area* garden = new area(1, 4, "Garden");
     garden->setAreaDescription(
     "\nYou continue further on the grounds and enter the GARDEN. Damp,\n"
-    "rotted rose bushes line the perimeter. You hear a scurrying sound.\n");
+    "rotted rose bushes line the perimeter.\n");
     mob* rat3 = new mob("rat", "A large rat the size of a dog with saliva dripping from its fangs.", "bites", 5, 2); //creates enemy
     garden->addEnemy(rat3); //puts enemy in room
 
@@ -140,7 +130,7 @@ void areaSetup()
     area* diningRoom = new area(0, 3, "Dining Room");
     diningRoom->setAreaDescription(
     "\nYou walk into the DINING ROOM and see a broken table. Dust is\n"
-    "heavy in the air. You hear a scurrying sound.");
+    "heavy in the air.");
     mob* rat4 = new mob("rat", "A large rat the size of a dog with saliva dripping from its fangs.", "bites", 5, 2); //creates enemy
     diningRoom->addEnemy(rat4); //puts enemy in room
 

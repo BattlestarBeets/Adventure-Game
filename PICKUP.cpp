@@ -79,6 +79,8 @@ void pickup::useItem()
     area* currentArea = area::getCurrentArea();
     switch (itemFunction)
     {
+        case misc:
+        cout << "That's not a usable item." << endl;
         case cure:
         p1->healPlayer(itemHeal);
         cout << "You consume the " << itemDisplayName << ". Your health is now " <<
