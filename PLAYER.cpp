@@ -9,17 +9,7 @@ using std::cout; using std::cin; using std::string; using std::endl;
 
 //Defining here to avoid linker error.
 player* player::p1;
-player::player(){}
-
-//Sets player name. Call upon creation and forget about it.
-void player::setPlayerName()
-{
-    string enteredName;
-    cout << "What is your name?" << endl;
-    getline(cin, enteredName);
-    playerName = enteredName;
-    setPlayerJob(student);
-}
+player::player(){playerHealth = 20;}
 
 //Sets player's job and maxHealth. Call upon creation (as student) and when the
 //player picks up their starting weapon.
@@ -28,11 +18,13 @@ void player::setPlayerJob(eJob inJob)
     playerJob = inJob;
     switch (playerJob)
     {
-        case student: case mage: case cultist: playerHealth = 20; playerStats[maxHealth] = 20;
+        case student: playerHealth = 20; playerStats[maxHealth] = 20;
         break;
-        case rogue: playerHealth = 30; playerStats[maxHealth] = 30;
+        case mage: case cultist: playerStats[maxHealth] = 20;
         break;
-        case warrior: playerHealth = 40; playerStats[maxHealth] = 40;
+        case rogue: playerStats[maxHealth] = 30;
+        break;
+        case warrior: playerStats[maxHealth] = 40;
         break;
     }
 }
@@ -41,7 +33,7 @@ void player::setPlayerJob(eJob inJob)
 void player::hurtPlayer(int damage)
 {
     playerHealth -= damage;
-    if (playerHealth < 0) //If damage exceeds HP, die
+    if (playerHealth <= 0) //If damage exceeds HP, die
     {
         player::killPlayer();
     }
@@ -61,7 +53,7 @@ void player::healPlayer(int healing)
 }
 
 //Causes corruption damage.
-void player::corruptPlayer(int damage)
+/*void player::corruptPlayer(int damage)
 {
     playerCorruption += damage;
     if (playerCorruption >= 13) //Lucky 13 is the threshold. 13 or over? Die.
@@ -69,9 +61,10 @@ void player::corruptPlayer(int damage)
         player::badEnd();
     }
 }
+*/
 
 //Cures corruption damage.
-void player::purifyPlayer(int healing)
+/*void player::purifyPlayer(int healing)
 {
     if (playerCorruption - healing >= 0) //No negative corruption.
     {
@@ -80,6 +73,23 @@ void player::purifyPlayer(int healing)
     else
     {
         playerCorruption -= healing;
+    }
+}
+*/
+
+void player::showHealth()
+{
+    if (playerHealth <= playerStats[0] && playerHealth >= (playerStats[0] * 0.75))
+    {
+        cout << "Your health: " << playerHealth << "/" << playerStats[0] << endl;
+    }
+    else if (playerHealth <= (playerStats[0] * 0.75) && playerHealth >= (playerStats[0] * 0.25))
+    {
+        cout << "Health: " << playerHealth << "/" << playerStats[0] << endl;
+    }
+    else if (playerHealth <= (playerStats[0] * 0.25) && playerHealth >= 0)
+    {
+        cout << "Health: " << playerHealth << "/" << playerStats[0] << endl;
     }
 }
 
@@ -97,11 +107,12 @@ void player::killPlayer()
 }
 
 //This will be expanded to account for what corrupted you.
-void player::badEnd()
+/*void player::badEnd()
 {
     cout << "You have suffered a fate worse than death." << endl;
     exit(0);
 }
+*/
 
 //Call this in order to refer to the player.
 player* player::getPlayer()

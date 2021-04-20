@@ -15,22 +15,18 @@ class player
     static player* p1; //Making this class a singleton so the instance can be called
     //from anywhere.
     player(); //Private constructor for the singleton; prevents erroneous reconstruction.
-    string playerName; //Entered by player at beginning of game.
-    int playerLocationX; //Character's location along the X-axis.
-    int playerLocationY; //Character's location along the Y-axis.
     eJob playerJob; //The character's class.
-    int playerStats[5]; //Stores the player's stats.
-    friend class pickup;
-    friend class area;
+    unsigned int playerStats[1]; //Stores the player's stats (currently just maxHealth).
 
     public:
-    int playerHealth; //The character's health meter. Stores current health, not max.
-    int playerCorruption; //The character's corruption meter. This serves
+    unsigned int playerHealth; //The character's health meter. Stores current health, not max.
+    //unsigned int playerCorruption; //The character's corruption meter. This serves
     //as a sort of secondary health bar, related less to physical damage
     //and more to mental or moral harm. Starts at 0, goes to 13.
     static player* getPlayer(); //Use this to point to p1, the player.
-    int getPlayerX() {return playerLocationX;} //Gets player's X-coordinates.
-    int getPlayerY() {return playerLocationY;} //Gets player's Y-coordinates.
+    int playerLocationX; //Character's location along the X-axis.
+    int playerLocationY; //Character's location along the Y-axis.
+    void showHealth();
     int getMaxHP() {return playerStats[0];}
     eJob getJob() {return playerJob;}
     void setPlayerName(); //Sets the player's name.
@@ -38,11 +34,11 @@ class player
     //starting weapon.
     void hurtPlayer(int); //Lowers player's health.
     void healPlayer(int); //Increases player's health up to max.
-    void corruptPlayer(int); //Increases player's corruption.
-    void purifyPlayer(int); //Decreases player's corruption.
+    //void corruptPlayer(int); //Increases player's corruption.
+    //void purifyPlayer(int); //Decreases player's corruption.
     void modPlayerStat(eStat, int); //Modifies the specified stat.
     void killPlayer(); //Game over.
-    void badEnd(); //Game over (corruption edition).
+    //void badEnd(); //Game over (corruption edition).
     vector <pickup> playerInventory;
     pickup* playerWeapon;
 };

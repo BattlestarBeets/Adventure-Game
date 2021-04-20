@@ -38,16 +38,14 @@ void pickup::takeItem()
     }
     if (itemDisplayName == "necklace")
     {
+        cout << "The necklace doesn't actually do anything, but it sure looks cool. \n"
+        "Maybe you can get a few bucks for it." << endl;
         currentArea->setAreaDescription("You stand in the graveyard. It's spooky out here.");
     }
     if (itemDisplayName == "book")
     {
         currentArea->setAreaDescription("You stand in the library. None of the other books\n"
         "look very interesting.");
-    }
-    if (itemDisplayName == "knife")
-    {
-        currentArea->setAreaDescription("You stand in the kitchen. You wish you weren't.");
     }
 }
 

@@ -5,6 +5,7 @@
 #include "player.hpp"
 #include <iostream>
 #include <string>
+#include <limits>
 using std::cout; using std::cin; using std::string; using std::endl;
 
 void getInventory()
@@ -23,12 +24,18 @@ void getInventory()
 		{
 			cout << "Enter a number to view the item, or enter 0 to exit." << endl;
 			cin >> playerChoice;
-			if (playerChoice != static_cast<int>(playerChoice))
+			if (cin.fail())
 			{
-				cout << "Invalid entry." << endl;
+				cin.clear();
+				cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
+				cout << "Invalid input. Enter a number to view the item, or enter 0 to exit." << endl;
+			}
+			else if (!cin.fail())
+			{
+				break;
 			}
 		}
-		while (playerChoice != static_cast<int>(playerChoice));
+		while (true);
 		if (playerChoice != 0)
 		{
 			try
