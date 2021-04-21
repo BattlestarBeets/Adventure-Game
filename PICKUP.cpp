@@ -54,9 +54,9 @@ void pickup::destroyItem()
 {
     player* p1 = player::getPlayer();
     int j = 0;
+    int i = 0;
     for (auto it : p1->playerInventory)
     {
-        int i = 0;
         if (it.itemDisplayName == this->itemDisplayName)
         {
             p1->playerInventory.erase(p1->playerInventory.begin() + i);
