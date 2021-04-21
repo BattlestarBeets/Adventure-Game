@@ -21,8 +21,6 @@ void areaSetup()
     "grabbing a few valuables. Throughout the room, carved stone busts and painted\n"
     "portraits leer at you. No matter where you walk, their gaze seems to follow.\n"
     "You want to leave this area urgently.\n");
-    pickup* apple1 = new pickup(cure, "apple", "A shiny red apple that restores 5 health.", 5); //creates the apple
-    startRoom->addItem(*apple1);
 
     //ROOM TO THE NORTH: SWORD ROOM INITIALIZATION
     area* swordRoom = new area (2, 2, "Storage room");

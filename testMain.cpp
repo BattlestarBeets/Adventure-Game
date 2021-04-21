@@ -5,7 +5,7 @@ int main()
 {
     areaSetup();
     player* p1 = player::getPlayer();
-    p1->setPlayerName();
+    p1->setPlayerJob(student);
     area* startRoom = area::getArea(2, 3);
     startRoom->enterArea();
     for(;;)
