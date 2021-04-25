@@ -9,7 +9,7 @@ using std::cout; using std::cin; using std::string; using std::endl;
 
 //Defining here to avoid linker error.
 player* player::p1;
-player::player(){}
+player::player(){playerHealth = 20;}
 
 //Sets player's job and maxHealth. Call upon creation (as student) and when the
 //player picks up their starting weapon.
@@ -53,7 +53,7 @@ void player::healPlayer(int healing)
 }
 
 //Causes corruption damage.
-void player::corruptPlayer(int damage)
+/*void player::corruptPlayer(int damage)
 {
     playerCorruption += damage;
     if (playerCorruption >= 13) //Lucky 13 is the threshold. 13 or over? Die.
@@ -61,9 +61,10 @@ void player::corruptPlayer(int damage)
         player::badEnd();
     }
 }
+*/
 
 //Cures corruption damage.
-void player::purifyPlayer(int healing)
+/*void player::purifyPlayer(int healing)
 {
     if (playerCorruption - healing >= 0) //No negative corruption.
     {
@@ -72,6 +73,39 @@ void player::purifyPlayer(int healing)
     else
     {
         playerCorruption -= healing;
+    }
+}
+*/
+
+void player::showHealth()
+{
+    if (playerHealth <= playerStats[0] && playerHealth >= (playerStats[0] * 0.75))
+    {
+        cout << "Your health: " << playerHealth << "/" << playerStats[0] << endl;
+    }
+    else if (playerHealth <= (playerStats[0] * 0.75) && playerHealth >= (playerStats[0] * 0.25))
+    {
+        cout << "Health: " << playerHealth << "/" << playerStats[0] << endl;
+    }
+    else if (playerHealth <= (playerStats[0] * 0.25) && playerHealth >= 0)
+    {
+        cout << "Health: " << playerHealth << "/" << playerStats[0] << endl;
+    }
+}
+
+void player::showHealth()
+{
+    if (playerHealth <= playerStats[0] && playerHealth >= (playerStats[0] * 0.75))
+    {
+        cout << "Your health: " << playerHealth << "/" << playerStats[0] << endl;
+    }
+    else if (playerHealth <= (playerStats[0] * 0.75) && playerHealth >= (playerStats[0] * 0.25))
+    {
+        cout << "Health: " << playerHealth << "/" << playerStats[0] << endl;
+    }
+    else if (playerHealth <= (playerStats[0] * 0.25) && playerHealth >= 0)
+    {
+        cout << "Health: " << playerHealth << "/" << playerStats[0] << endl;
     }
 }
 
@@ -105,11 +139,12 @@ void player::killPlayer()
 }
 
 //This will be expanded to account for what corrupted you.
-void player::badEnd()
+/*void player::badEnd()
 {
     cout << "You have suffered a fate worse than death." << endl;
     exit(0);
 }
+*/
 
 //Call this in order to refer to the player.
 player* player::getPlayer()

@@ -35,7 +35,7 @@ void getInventory()
 				break;
 			}
 		}
-		while (1);
+		while (true);
 		if (playerChoice != 0)
 		{
 			try

@@ -270,7 +270,7 @@ area::area(string name)
     areaName = name;
     vector<pickup> temp;
     areaItems = temp;
-    areaEnemy = NULL;
+    areaEnemy = nullptr;
 }
 
 //Use for areas the player is not in.
@@ -292,7 +292,7 @@ area* area::getArea(string name)
         }
     }
     std::cout << "Attempted to get an area that does not exist." << endl;
-    return 0;
+    return nullptr;
 }
 
 //Use for the area the player is currently in.

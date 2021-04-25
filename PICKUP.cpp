@@ -38,16 +38,14 @@ void pickup::takeItem()
     }
     if (itemDisplayName == "necklace")
     {
+        cout << "The necklace doesn't actually do anything, but it sure looks cool. \n"
+        "Maybe you can get a few bucks for it." << endl;
         currentArea->setAreaDescription("You stand in the graveyard. It's spooky out here.");
     }
     if (itemDisplayName == "book")
     {
         currentArea->setAreaDescription("You stand in the library. None of the other books\n"
         "look very interesting.");
-    }
-    if (itemDisplayName == "knife")
-    {
-        currentArea->setAreaDescription("You stand in the kitchen. You wish you weren't.");
     }
 }
 
@@ -56,9 +54,9 @@ void pickup::destroyItem()
 {
     player* p1 = player::getPlayer();
     int j = 0;
+    int i = 0;
     for (auto it : p1->playerInventory)
     {
-        int i = 0;
         if (it.itemDisplayName == this->itemDisplayName)
         {
             p1->playerInventory.erase(p1->playerInventory.begin() + i);
@@ -81,6 +79,8 @@ void pickup::useItem()
     area* currentArea = area::getCurrentArea();
     switch (itemFunction)
     {
+        case misc:
+        cout << "That's not a usable item." << endl;
         case cure:
         p1->healPlayer(itemHeal);
         cout << "You consume the " << itemDisplayName << ". Your health is now " <<
