@@ -93,6 +93,22 @@ void player::showHealth()
     }
 }
 
+void player::showHealth()
+{
+    if (playerHealth <= playerStats[0] && playerHealth >= (playerStats[0] * 0.75))
+    {
+        cout << "Your health: " << playerHealth << "/" << playerStats[0] << endl;
+    }
+    else if (playerHealth <= (playerStats[0] * 0.75) && playerHealth >= (playerStats[0] * 0.25))
+    {
+        cout << "Health: " << playerHealth << "/" << playerStats[0] << endl;
+    }
+    else if (playerHealth <= (playerStats[0] * 0.25) && playerHealth >= 0)
+    {
+        cout << "Health: " << playerHealth << "/" << playerStats[0] << endl;
+    }
+}
+
 //Mods stats; can be positive or negative.
 void player::modPlayerStat(eStat stat, int modification)
 {
