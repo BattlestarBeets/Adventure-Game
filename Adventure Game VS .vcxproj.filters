@@ -48,6 +48,9 @@
     <ClCompile Include="InventoryList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="warriorClass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="area.hpp">
@@ -78,6 +81,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HealthCorruptionCode.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="warriorClass.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

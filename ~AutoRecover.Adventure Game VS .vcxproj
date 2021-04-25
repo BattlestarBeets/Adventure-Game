@@ -100,6 +100,8 @@
   <ItemGroup>
     <ClCompile Include="AREA.cpp" />
     <ClCompile Include="FileInput.cpp" />
+    <ClCompile Include="HealthCorruptionCode.cpp" />
+    <ClCompile Include="InventoryList.cpp" />
     <ClCompile Include="mageClass.cpp" />
     <ClCompile Include="mobs.cpp" />
     <ClCompile Include="NEWAREA.cpp" />
@@ -107,16 +109,20 @@
     <ClCompile Include="PICKUP.cpp" />
     <ClCompile Include="PLAYER.cpp" />
     <ClCompile Include="testMain.cpp" />
+    <ClCompile Include="warriorClass.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="area.hpp" />
     <ClInclude Include="enums.hpp" />
+    <ClInclude Include="HealthCorruptionCode.hpp" />
+    <ClInclude Include="InventoryList.hpp" />
     <ClInclude Include="mageClass.hpp" />
     <ClInclude Include="mobs.hpp" />
     <ClInclude Include="newArea.hpp" />
     <ClInclude Include="parser.hpp" />
     <ClInclude Include="pickup.hpp" />
     <ClInclude Include="player.hpp" />
+    <ClInclude Include="warriorClass.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

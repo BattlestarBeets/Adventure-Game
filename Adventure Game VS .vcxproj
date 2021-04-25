@@ -109,6 +109,7 @@
     <ClCompile Include="PICKUP.cpp" />
     <ClCompile Include="PLAYER.cpp" />
     <ClCompile Include="testMain.cpp" />
+    <ClCompile Include="warriorClass.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="area.hpp" />
@@ -121,6 +122,7 @@
     <ClInclude Include="parser.hpp" />
     <ClInclude Include="pickup.hpp" />
     <ClInclude Include="player.hpp" />
+    <ClInclude Include="warriorClass.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

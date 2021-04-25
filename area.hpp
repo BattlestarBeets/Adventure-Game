@@ -12,6 +12,7 @@ class mob;
 #include "enums.hpp"
 #include "mobs.hpp"
 #include "mageClass.hpp"
+#include "warriorClass.hpp"
 using std::string; using std::vector;
 
 class area
