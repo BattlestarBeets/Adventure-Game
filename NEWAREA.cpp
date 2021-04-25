@@ -117,32 +117,32 @@ void areaSetup()
     corridor->setAreaDescription(
     "\nYou walk deeper into a CORRIDOR. It is dimly lit and damp. You hear a\n"
     "scurrying sound.\n");
-    mob* rat1 = new mob("rat", "A large rat the size of a dog with saliva dripping from its fangs.", "bites", 5, 2); //creates enemy
-    corridor->addEnemy(rat1); //puts enemy in room
+    mob* rat = new mob("rat", "A large rat the size of a dog with saliva dripping from its fangs.", "bites", 5, 2); //creates enemy
+    corridor->addEnemy(rat); //puts enemy in room
 
     //ROOM WEST OF LIBRARY: STUDY
     area* study = new area(4, 3, "Study");
     study->setAreaDescription(
     "\nYou open the door and find yourself in a STUDY. It is candle lit and\n"
-    "surrounded by bookshelves. You hear a scurrying sound.\n");
-    mob* rat2 = new mob("rat", "A large rat the size of a dog with saliva dripping from its fangs.", "bites", 5, 2); //creates enemy
-    study->addEnemy(rat2); //puts enemy in room
+    "surrounded by bookshelves. You hear someone whispering hurredly to themselves.\n");
+    mob* madman = new mob("madman", "A later victim of the scientist's profane experiments. Driven to insanity, he lusts for blood.", "gnaws", 5, 2); //creates enemy
+    study->addEnemy(madman); //puts enemy in room
 
     //ROOM EAST OF CEMETERY: GARDEN
     area* garden = new area(1, 4, "Garden");
     garden->setAreaDescription(
     "\nYou continue further on the grounds and enter the GARDEN. Damp,\n"
-    "rotted rose bushes line the perimeter. You hear a scurrying sound.\n");
-    mob* rat3 = new mob("rat", "A large rat the size of a dog with saliva dripping from its fangs.", "bites", 5, 2); //creates enemy
-    garden->addEnemy(rat3); //puts enemy in room
+    "rotted rose bushes line the perimeter. You hear heavy breathing.\n");
+    mob* cultist = new mob("cultist", "A devout follower of the mansion possessed with the urge to kill.", "lashes out", 5, 2); //creates enemy
+    garden->addEnemy(cultist); //puts enemy in room
 
     //ROOM EAST OF KITCHEN: DINING ROOM
     area* diningRoom = new area(0, 3, "Dining Room");
     diningRoom->setAreaDescription(
     "\nYou walk into the DINING ROOM and see a broken table. Dust is\n"
-    "heavy in the air. You hear a scurrying sound.");
-    mob* rat4 = new mob("rat", "A large rat the size of a dog with saliva dripping from its fangs.", "bites", 5, 2); //creates enemy
-    diningRoom->addEnemy(rat4); //puts enemy in room
+    "heavy in the air. You hear the rattling of bones.\n");
+    mob* skeleton = new mob("skeleton", "An angry skeleton with rotted flesh clinging to some of its bones.", "grabs", 5, 2); //creates enemy
+    diningRoom->addEnemy(skeleton); //puts enemy in room
 
     //LOCKED ROOM: BUTLERS ROOM
     area* butlerRoom = new area(0, 2, "Butler's Room", true);
