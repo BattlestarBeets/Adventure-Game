@@ -1,14 +1,1 @@
-﻿  AREA.cpp
-  FileInput.cpp
-  HealthCorruptionCode.cpp
-c1xx : fatal error C1083: Cannot open source file: 'HealthCorruptionCode.cpp': No such file or directory
-  InventoryList.cpp
-  mageClass.cpp
-  mobs.cpp
-  NEWAREA.cpp
-C:\Users\Cortana\source\repos\BattlestarBeets\Adventure-Game\NEWAREA.cpp(129,21): error C2065: 'rat2': undeclared identifier
-  PARSER.cpp
-  PICKUP.cpp
-  PLAYER.cpp
-  testMain.cpp
-  Generating Code...
+﻿  Adventure Game VS .vcxproj -> C:\Users\joey1\source\repos\BattlestarBeets\Adventure-Game\x64\Debug\Adventure Game VS .exe

@@ -12,5 +12,8 @@ int main()
     {
         userInput();
     }
+    std::cout << "Enter any input to exit." << std::endl;
+    std::string close;
+    std::cin >> close;
     return 0;
 }

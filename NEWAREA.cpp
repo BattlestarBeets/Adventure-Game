@@ -2,6 +2,7 @@
 #ifndef newarea_cpp
 #define newarea_cpp
 #include "newArea.hpp"
+#include <ctime>
 
 
 void areaSetup()

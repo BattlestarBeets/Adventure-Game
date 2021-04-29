@@ -22,9 +22,9 @@ void player::setPlayerJob(eJob inJob)
         break;
         case mage: case cultist: playerStats[maxHealth] = 20;
         break;
-        case rogue: playerStats[maxHealth] = 30;
+        case rogue: playerStats[maxHealth] = 30; playerHealth += 10;
         break;
-        case warrior: playerStats[maxHealth] = 40;
+        case warrior: playerStats[maxHealth] = 40; playerHealth += 20;
         break;
     }
 }

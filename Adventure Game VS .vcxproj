@@ -100,7 +100,6 @@
   <ItemGroup>
     <ClCompile Include="AREA.cpp" />
     <ClCompile Include="FileInput.cpp" />
-    <ClCompile Include="HealthCorruptionCode.cpp" />
     <ClCompile Include="InventoryList.cpp" />
     <ClCompile Include="mageClass.cpp" />
     <ClCompile Include="mobs.cpp" />
@@ -114,7 +113,6 @@
   <ItemGroup>
     <ClInclude Include="area.hpp" />
     <ClInclude Include="enums.hpp" />
-    <ClInclude Include="HealthCorruptionCode.hpp" />
     <ClInclude Include="InventoryList.hpp" />
     <ClInclude Include="mageClass.hpp" />
     <ClInclude Include="mobs.hpp" />

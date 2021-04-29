@@ -125,11 +125,10 @@ void area::fightSequence()
     {
         areaEnemy->enemyAttack();
     }
-    if (p1->playerHealth <= 0)
+    if (p1->playerHealth > 0)
     {
-        p1->killPlayer();
+        p1->showHealth();
     }
-    p1->showHealth();
 }
 
 //Moves the player in a given direction.
