@@ -1,0 +1,12 @@
+You unlock the door to what seems to be the butler's room. There's some strange and eery noises coming from the other side of that door. You hesitate to enter but the thought of the reward on the other side pushes you to open the door. There he is. The Butler, withered and decayed. Will you fight for your life or run? You choose to fight. grab your weapon and begin.
+
+
+Win:
+The Butler collapses after you deal the final blow. He disintegrates to dust and behind him you see the safe that he had been trying to protect. You approach the safe and notice it isn't even locked. Was he trying to close it before you walked in? The rusty safe creaks open as you pull on the handle and there you see stacks of gold bricks and a variety of test tubes with different elixirs in them. You grab them all and leave. It's day light now and you feel like you've been gone for days. With a sigh relief and a backpack full of riches you leave and go on your merry way. 
+
+YOU HAVE WON
+
+Lose:
+You lie on the ground, bleeding out, bones shattered. You see the Butler walk away from you and lock the open safe. You get a glimpse of the riches stored inside. You were so close. Weapon out of reach, your vision starts to falter and you start to see black specks. He laughs a chilling laugh and bends down to look you in the eye. You begin to lose consciousness and hear him say his final words to you.
+
+YOU HAVE LOST
