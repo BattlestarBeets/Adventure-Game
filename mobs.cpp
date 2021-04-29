@@ -44,6 +44,14 @@ void mob::enemyDeathCheck()
         }
         if (enemyName == "butler")
         {
+            cout << "The Butler collapses after you deal the final blow. He disintegrates \n"
+            "and behind him you see the safe that he had been trying to protect. You approach\n"
+            "the safe and notice it isn't even locked. Was he trying to close it before you walked\n"
+            "in? The rusty safe creaks open as you pull on the handle and there you see stacks of\n"
+            "gold bricks and a variety of test tubes with different elixirs in them. You grab\n"
+            "them all and leave. It's day light now and you feel like you've been gone for days.\n"
+            "With a sigh relief and a backpack full of riches you leave and go on your merry way."
+            << endl;
             currentArea->setAreaDescription("You stand in the erstwhile butler's quarters.");
             player* p1 = player::getPlayer();
             p1->winGame();
