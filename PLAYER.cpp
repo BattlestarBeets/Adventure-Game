@@ -9,7 +9,7 @@ using std::cout; using std::cin; using std::string; using std::endl;
 
 //Defining here to avoid linker error.
 player* player::p1;
-player::player(){playerHealth = 20;}
+player::player(){playerHealth = 20; playerStats[maxHealth] = 20; won = false; lost = false;}
 
 //Sets player's job and maxHealth. Call upon creation (as student) and when the
 //player picks up their starting weapon.
@@ -81,39 +81,7 @@ void player::showHealth()
 {
     if (playerHealth <= playerStats[0] && playerHealth >= (playerStats[0] * 0.75))
     {
-        cout << "Your health: " << playerHealth << "/" << playerStats[0] << endl;
-    }
-    else if (playerHealth <= (playerStats[0] * 0.75) && playerHealth >= (playerStats[0] * 0.25))
-    {
         cout << "Health: " << playerHealth << "/" << playerStats[0] << endl;
-    }
-    else if (playerHealth <= (playerStats[0] * 0.25) && playerHealth >= 0)
-    {
-        cout << "Health: " << playerHealth << "/" << playerStats[0] << endl;
-    }
-}
-
-void player::showHealth()
-{
-    if (playerHealth <= playerStats[0] && playerHealth >= (playerStats[0] * 0.75))
-    {
-        cout << "Your health: " << playerHealth << "/" << playerStats[0] << endl;
-    }
-    else if (playerHealth <= (playerStats[0] * 0.75) && playerHealth >= (playerStats[0] * 0.25))
-    {
-        cout << "Health: " << playerHealth << "/" << playerStats[0] << endl;
-    }
-    else if (playerHealth <= (playerStats[0] * 0.25) && playerHealth >= 0)
-    {
-        cout << "Health: " << playerHealth << "/" << playerStats[0] << endl;
-    }
-}
-
-void player::showHealth()
-{
-    if (playerHealth <= playerStats[0] && playerHealth >= (playerStats[0] * 0.75))
-    {
-        cout << "Your health: " << playerHealth << "/" << playerStats[0] << endl;
     }
     else if (playerHealth <= (playerStats[0] * 0.75) && playerHealth >= (playerStats[0] * 0.25))
     {
@@ -135,14 +103,20 @@ void player::modPlayerStat(eStat stat, int modification)
 void player::killPlayer()
 {
     cout << "Congratulations! You died." << endl;
-    exit(0);
+    lost = true;
+}
+
+void player::winGame()
+{
+    cout << "YOU WON!" << endl;
+    won = true;
 }
 
 //This will be expanded to account for what corrupted you.
 /*void player::badEnd()
 {
     cout << "You have suffered a fate worse than death." << endl;
-    exit(0);
+    lost = true;
 }
 */
 

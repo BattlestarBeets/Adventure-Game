@@ -29,11 +29,11 @@ class area
 
     public:
     static area* getArea(int, int); //Returns an area's pointer from areaMap.
-    static area* getArea(string); //Returns an area's pointer from areaMap (overload).
     static area* getCurrentArea(); //Returns the pointer of the current area.
     area(int, int, string); //Basic constructor; takes coordinates and area name.
     area(string); //Constructor for areas that don't fit on the map.
     area(int, int, string, bool); //Constructor for locked rooms. Additionally takes lock.
+    string getAreaName() {return areaName;};
     void displayArea(); //Displays the area description.
     void findExits(); //Finds any exits and outputs their locations.
     void enterArea(); //Moves the player to a given area.

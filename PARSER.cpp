@@ -29,6 +29,7 @@ std::map<string, eVerb> makeVerbMap()
     verbMap["drink"] = use;
     verbMap["inventory"] = inventory; verbMap["i"] = inventory;
     verbMap["cast"] = cast;
+    verbMap["attack"] = attack; verbMap["stab"] = attack; verbMap["slash"] = attack; verbMap["hit"] = attack;
     return verbMap;
 }
 
@@ -182,6 +183,10 @@ bool parseInput(vector<string> sentence)
                     cout << "There's nothing to incinerate here." << endl;
                 }
             }
+            else if (lowercase(sentence[1]) == "heal")
+            {
+                healingSpell();
+            }
             else
             {
                 cout << "You can't cast that spell." << endl;
@@ -190,6 +195,16 @@ bool parseInput(vector<string> sentence)
         else
         {
             cout << "Cast what?" << endl;
+        }
+        break;
+        case attack:
+        if (p1->getJob() == mage || p1->getJob() == student)
+        {
+            cout << "Attack with what? A book?" << endl;
+        }
+        else
+        {
+            slash(currentArea->areaEnemy);
         }
         break;
     }

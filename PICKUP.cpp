@@ -20,6 +20,10 @@ void pickup::takeItem()
     {
         p1->playerInventory.push_back(*this);
         cout << "Picked up " << itemDisplayName << "!" << endl;
+        if (itemFunction == key)
+        {
+            cout << "It looks like it might open the " << itemLock->getAreaName() << "." << endl;
+        }
     }
     int i = 0;
     for (auto it : currentArea->areaItems)
@@ -35,6 +39,21 @@ void pickup::takeItem()
     {
         currentArea->setAreaDescription("You stand in the storage room. You took the sword;\n"
         "nothing else here interests you.");
+        area* library = area::getArea(3, 3);
+        int j = 0;
+        for (auto it : library->areaItems)
+        {
+            if (it.itemDisplayName == "book")
+            {
+                library->areaItems.erase(library->areaItems.begin() + j);
+                break;
+            }
+            else
+            {
+                j++;
+            }
+        }
+        library->setAreaDescription("You stand in the library. None of the books seem very interesting.");
     }
     if (itemDisplayName == "necklace")
     {
@@ -46,6 +65,18 @@ void pickup::takeItem()
     {
         currentArea->setAreaDescription("You stand in the library. None of the other books\n"
         "look very interesting.");
+        area* swordRoom = area::getArea(2, 2);
+        int j = 0;
+        for (auto it : swordRoom->areaItems)
+        {
+            if (it.itemDisplayName == "sword")
+            {
+                swordRoom->areaItems.erase(swordRoom->areaItems.begin() + j);
+                break;
+            }
+            j++;
+        }
+        swordRoom->setAreaDescription("You stand in a cluttered storage room. Nothing interesting here.");
     }
 }
 
@@ -84,7 +115,7 @@ void pickup::useItem()
         case cure:
         p1->healPlayer(itemHeal);
         cout << "You consume the " << itemDisplayName << ". Your health is now " <<
-        p1->playerHealth << endl;
+        p1->playerHealth << "." << endl;
         destroyItem();
         break;
         case key:
@@ -150,10 +181,6 @@ pickup::pickup(eUse function, string name, string desc, int variable) //pickup* 
     {
         itemHeal = variable;
     }
-    else if (function == weapon)
-    {
-        weaponDamage = variable;
-    }
 }
 
 pickup::pickup(eUse function, eJob job, string name, string desc, int variable) //pickup* itemName[1](roomName, itemType, itemName, itemDescription, healingAmount) //put this in NEWAREA.CPP
@@ -162,14 +189,19 @@ pickup::pickup(eUse function, eJob job, string name, string desc, int variable) 
     itemJob = job;
     itemDescription = desc;
     itemDisplayName = name;
-    if (function == cure)
-    {
-        itemHeal = variable;
-    }
-    else if (function == weapon)
+    if (function == weapon)
     {
         weaponDamage = variable;
     }
+}
+
+pickup::pickup(eUse function, string name, string desc, int X, int Y) //pickup* itemName[1](function, itemType, itemName, roomX, roomY) //put this in NEWAREA.CPP
+{
+    itemFunction = function;
+    itemJob = student;
+    itemDisplayName = name;
+    itemDescription = desc;
+    itemLock = area::getArea(X, Y);
 }
 
 void pickup::equipWeapon()
@@ -178,8 +210,20 @@ void pickup::equipWeapon()
     p1->playerWeapon = this;
     if (p1->getJob() == student)
     {
-        cout << "You are now a mage! If there is a creature in your current location,\n"
-        "you can type 'cast fireball' to give it what for." << endl;
+        switch (itemJob)
+        {
+            case mage:
+            cout << "You are now a mage! If there is a creature in your current location,\n"
+            "you can type 'cast fireball' to give it what for. Otherwise, 'cast heal'\n"
+            "to heal yourself." << endl;
+            break;
+            case warrior:
+            cout << "You are now a warrior! If there is a creature in your current location,\n"
+            "you can type 'attack' to stab it until it is dead." << endl;
+            break;
+            default:
+            cout << "Something has gone terribly wrong." << endl;
+        }
     }
     p1->setPlayerJob(itemJob);
     cout << "Equipped " << itemDisplayName << "!" << endl;

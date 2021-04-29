@@ -40,7 +40,7 @@ void areaSetup()
     "trash them, when a crashing sound causes you to jump and look to the right.\n"
     "A mouse has caused one of the trinket mountains to collapse, revealing an\n"
     "armored knight statue holding a SWORD beneath it.");
-    pickup* sword = new pickup(misc, "sword", "A beautiful, shiny sword. Sadly, it does nothing.", 0);
+    pickup* sword = new pickup(weapon, warrior, "sword", "A beautiful, shiny sword.", 7);
     swordRoom->addItem(*sword);
 
     //ROOM TO THE SOUTH: GRAVEYARD/CEMETERY INITIALIZATION
@@ -105,32 +105,24 @@ void areaSetup()
     area* corridor = new area(2, 1, "Corridor");
     corridor->setAreaDescription(
     "\nYou walk deeper into a CORRIDOR. It is dimly lit and damp.\n");
-    mob* rat1 = new mob("rat", "A large rat the size of a dog with saliva dripping from its fangs.", "bites", 5, 2); //creates enemy
-    corridor->addEnemy(rat1); //puts enemy in room
+    mob* rat = new mob("rat", "A large rat the size of a dog with saliva dripping from its fangs.", "bites", 5, 2); //creates enemy
+    corridor->addEnemy(rat); //puts enemy in room
 
     //ROOM WEST OF LIBRARY: STUDY
     area* study = new area(4, 3, "Study");
     study->setAreaDescription(
     "\nYou open the door and find yourself in a STUDY. It is candle lit and\n"
     "surrounded by bookshelves.\n");
-    mob* rat2 = new mob("rat", "A large rat the size of a dog with saliva dripping from its fangs.", "bites", 5, 2); //creates enemy
-    study->addEnemy(rat2); //puts enemy in room
+    mob* madman = new mob("madman", "A later victim of the scientist's profane experiments. Driven to insanity, he lusts for blood.", "gnaws at", 10, 3); //creates enemy
+    study->addEnemy(madman); //puts enemy in room
 
     //ROOM EAST OF CEMETERY: GARDEN
     area* garden = new area(1, 4, "Garden");
     garden->setAreaDescription(
     "\nYou continue further on the grounds and enter the GARDEN. Damp,\n"
     "rotted rose bushes line the perimeter.\n");
-    mob* rat3 = new mob("rat", "A large rat the size of a dog with saliva dripping from its fangs.", "bites", 5, 2); //creates enemy
-    garden->addEnemy(rat3); //puts enemy in room
-
-    //ROOM EAST OF KITCHEN: DINING ROOM
-    area* diningRoom = new area(0, 3, "Dining Room");
-    diningRoom->setAreaDescription(
-    "\nYou walk into the DINING ROOM and see a broken table. Dust is\n"
-    "heavy in the air.");
-    mob* rat4 = new mob("rat", "A large rat the size of a dog with saliva dripping from its fangs.", "bites", 5, 2); //creates enemy
-    diningRoom->addEnemy(rat4); //puts enemy in room
+    mob* cultist = new mob("cultist", "A devout follower of the mansion possessed with the urge to kill.", "lashes out at", 15, 4); //creates enemy
+    garden->addEnemy(cultist); //puts enemy in room
 
     //LOCKED ROOM: BUTLERS ROOM
     area* butlerRoom = new area(0, 2, "Butler's Room", true);
@@ -140,5 +132,17 @@ void areaSetup()
     "the grotesque, animate corpse of the butler.\n");
     mob* butler = new mob("butler", "The animated corpse of the mansion's butler. Likely the first victim of the scientist's profane experiments.", "strikes", 25, 7); //creates enemy
     butlerRoom->addEnemy(butler); //puts enemy in room
+
+    //ROOM EAST OF KITCHEN: DINING ROOM
+    area* diningRoom = new area(0, 3, "Dining Room");
+    diningRoom->setAreaDescription(
+    "\nYou walk into the DINING ROOM and see a broken table. Dust is\n"
+    "heavy in the air.");
+    pickup* butlerKey = new pickup(key, "key", "A rusty old key. It must open the butler's quarters!", 0, 2);
+    mob* skeleton = new mob("skeleton", "An angry skeleton with rotted flesh clinging to some of its bones.", "claws", 20, 5, butlerKey); //creates enemy
+    diningRoom->addEnemy(skeleton); //puts enemy in room
+
+    //Storing this here so it doesn't get redefined constantly.
+    srand(time(NULL));
 }
 #endif

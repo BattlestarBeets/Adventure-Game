@@ -17,6 +17,7 @@ mob::mob(string name, string desc, string attackDesc, int health, int damage)
     enemyAttackDesc = attackDesc;
     enemyHealth = health;
     enemyAttackDamage = damage;
+    enemyDrop = nullptr;
 }
 
 mob::mob(string name, string desc, string attackDesc, int health, int damage, pickup* mobDrop)
@@ -36,10 +37,21 @@ void mob::enemyDeathCheck()
     {
         currentArea->areaEnemy = nullptr;
         cout << "You have slain the " << enemyName << "!" << endl;
+        if (enemyDrop != nullptr)
+        {
+            currentArea->addItem(*enemyDrop);
+            cout << "The " << enemyName << " dropped a " << enemyDrop->getItemName() << "!" << endl;
+        }
         if (enemyName == "butler")
         {
             currentArea->setAreaDescription("You stand in the erstwhile butler's quarters.");
+            player* p1 = player::getPlayer();
+            p1->winGame();
         }
+    }
+    else
+    {
+        cout << "Enemy health: " << enemyHealth << endl;
     }
 }
 
@@ -49,7 +61,7 @@ void mob::enemyAttack()
     srand(time(NULL));
     int damage = rand() % enemyAttackDamage + (enemyAttackDamage / 2);
     p1->hurtPlayer(damage);
-    cout << "The " << enemyName << " " << enemyAttackDesc << " for " << damage << " damage!" << endl;
+    cout << "The " << enemyName << " " << enemyAttackDesc << " you for " << damage << " damage!" << endl;
 }
 
 #endif

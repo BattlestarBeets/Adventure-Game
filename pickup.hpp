@@ -24,6 +24,7 @@ class pickup
     public:
     pickup(eUse, string, string, int); //Basic constructor.
     pickup(eUse, eJob, string, string, int); //Weapon constructor.
+    pickup(eUse, string, string, int, int); //Key constructor.
     void takeItem(); //Puts the item in the player's inventory.
     void useItem(); //Uses an item's special ability. Keys unlock, food is eaten, etc.
     void destroyItem(); //Destroys an item when that (destructible) item is used.

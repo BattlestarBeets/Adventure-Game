@@ -117,7 +117,7 @@ void area::setAreaDescription(string description)
 void area::fightSequence()
 {
     player* p1 = player::getPlayer();
-    if (areaEnemy->enemyHealth <= 0)
+    if (areaEnemy != nullptr)
     {
         areaEnemy->enemyDeathCheck();
     }
@@ -276,23 +276,15 @@ area::area(string name)
 //Use for areas the player is not in.
 area* area::getArea(int X, int Y)
 {
-    return areaMap[X][Y];
-}
-
-area* area::getArea(string name)
-{
-    for (int i = 0; i < areaMap.size(); i++)
+    try 
     {
-        for (int j = 0; j < areaMap[i].size(); j++)
-        {
-            if (areaMap[i][j]->areaName == name)
-            {
-                return areaMap[i][j];
-            }
-        }
+        return areaMap.at(X).at(Y);
     }
-    std::cout << "Attempted to get an area that does not exist." << endl;
-    return nullptr;
+    catch (const std::out_of_range& oor)
+    {
+        cout << "Something's wrong with the getArea function." << endl;
+        return nullptr;
+    }
 }
 
 //Use for the area the player is currently in.
